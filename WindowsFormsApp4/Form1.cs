@@ -42,6 +42,8 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            totality = Int32.Parse(totalityTextBox.Text);
+            String tempPizzaString = "";
             RadioButton radioBtn = this.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
             if (radioBtn != null)
             {
@@ -49,27 +51,45 @@ namespace WindowsFormsApp4
                 switch (radioBtn.Name)
                 {
                     case "margherittaRadioBtn":
-                        Debug.Write("Margheritta ");
-
+                        //   Debug.Write("Margheritta ");
+                        tempPizzaString = "Margheritta ";
+                        Debug.WriteLine("Switch: Add to totality pizza price - 20");
+                        totality = totality + 20;
                         break;
                     case "vegetarianaRadioBtn":
-                        Debug.Write("Vegetariana");
+                        ///   Debug.Write("Vegetariana");
+                        tempPizzaString = "Vegetariana ";
+                        Debug.WriteLine("Switch: Add to totality pizza price - 22");
+                        totality = totality + 22;
                         break;
                     case "toscaRadioBtn":
-                        Debug.Write("Tosca");
+                        //  Debug.Write("Tosca");
+                        tempPizzaString = "Tosca ";
+                        Debug.WriteLine("Switch: Add to totality pizza price - 25");
+                        totality = totality + 25;
                         break;
                     case "veneciaRadioBtn":
-                        Debug.Write("Venecia");
+                        //   Debug.Write("Venecia");
+                        tempPizzaString = "Venecia ";
+                        Debug.WriteLine("Switch Add to totality pizza price - 25");
+                        totality= totality + 25;
                         break;
                 }
             }
+            Debug.WriteLine("Button1_Click: Starting do foreach");
             foreach (CheckBox checkBox in groupBox1.Controls)
             {
                 if (checkBox.Checked)
                 {
-                    Debug.Write(", " +checkBox.Text);
+                    // Debug.Write(", " +checkBox.Text);
+                    tempPizzaString = tempPizzaString + " + " + checkBox.Text;
+                    Debug.WriteLine("Foreach: Add to totality addon price - 2");
+                    totality = totality + 2;
                 }
             }
+            Debug.WriteLine("Button1_Clicked: Pizza ordered: " + tempPizzaString);
+            Debug.WriteLine("Button1_Clicked: Adding totality value to the totalityTextBox - " + totality);
+            totalityTextBox.Text = totality.ToString();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

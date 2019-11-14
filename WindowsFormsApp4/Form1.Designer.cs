@@ -408,6 +408,7 @@
             this.totalityTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.totalityTextBox.Size = new System.Drawing.Size(196, 20);
             this.totalityTextBox.TabIndex = 33;
+            this.totalityTextBox.Text = "0";
             // 
             // addComBtn
             // 
