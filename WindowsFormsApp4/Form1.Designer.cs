@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Menu = new System.Windows.Forms.Label();
-            this.margerittaRadiotBtn = new System.Windows.Forms.RadioButton();
+            this.margherittaRadioBtn = new System.Windows.Forms.RadioButton();
             this.vegetarianaRadioBtn = new System.Windows.Forms.RadioButton();
             this.toscaRadioBtn = new System.Windows.Forms.RadioButton();
             this.veneciaRadioBtn = new System.Windows.Forms.RadioButton();
@@ -53,7 +53,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.saladBtn = new System.Windows.Forms.Button();
             this.saucesBtn = new System.Windows.Forms.Button();
-            this.billTreeView = new System.Windows.Forms.TreeView();
             this.label6 = new System.Windows.Forms.Label();
             this.coffeeBtn = new System.Windows.Forms.Button();
             this.teaBtn = new System.Windows.Forms.Button();
@@ -70,6 +69,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Menu
@@ -83,16 +85,17 @@
             this.Menu.Text = "Menu";
             this.Menu.Click += new System.EventHandler(this.Menu_Click);
             // 
-            // margerittaRadiotBtn
+            // margherittaRadioBtn
             // 
-            this.margerittaRadiotBtn.AutoSize = true;
-            this.margerittaRadiotBtn.Location = new System.Drawing.Point(19, 86);
-            this.margerittaRadiotBtn.Name = "margerittaRadiotBtn";
-            this.margerittaRadiotBtn.Size = new System.Drawing.Size(78, 17);
-            this.margerittaRadiotBtn.TabIndex = 1;
-            this.margerittaRadiotBtn.TabStop = true;
-            this.margerittaRadiotBtn.Text = "Margheritta";
-            this.margerittaRadiotBtn.UseVisualStyleBackColor = true;
+            this.margherittaRadioBtn.AutoSize = true;
+            this.margherittaRadioBtn.Location = new System.Drawing.Point(19, 86);
+            this.margherittaRadioBtn.Name = "margherittaRadioBtn";
+            this.margherittaRadioBtn.Size = new System.Drawing.Size(78, 17);
+            this.margherittaRadioBtn.TabIndex = 1;
+            this.margherittaRadioBtn.TabStop = true;
+            this.margherittaRadioBtn.Text = "Margheritta";
+            this.margherittaRadioBtn.UseVisualStyleBackColor = true;
+            this.margherittaRadioBtn.CheckedChanged += new System.EventHandler(this.margherittaRadioBtn_CheckedChanged);
             // 
             // vegetarianaRadioBtn
             // 
@@ -152,17 +155,18 @@
             // cheeseBox
             // 
             this.cheeseBox.AutoSize = true;
-            this.cheeseBox.Location = new System.Drawing.Point(161, 86);
+            this.cheeseBox.Location = new System.Drawing.Point(6, 7);
             this.cheeseBox.Name = "cheeseBox";
             this.cheeseBox.Size = new System.Drawing.Size(97, 17);
             this.cheeseBox.TabIndex = 7;
             this.cheeseBox.Text = "Double chesse";
             this.cheeseBox.UseVisualStyleBackColor = true;
+            this.cheeseBox.CheckedChanged += new System.EventHandler(this.cheeseBox_CheckedChanged);
             // 
             // salamiBox
             // 
             this.salamiBox.AutoSize = true;
-            this.salamiBox.Location = new System.Drawing.Point(161, 110);
+            this.salamiBox.Location = new System.Drawing.Point(6, 31);
             this.salamiBox.Name = "salamiBox";
             this.salamiBox.Size = new System.Drawing.Size(57, 17);
             this.salamiBox.TabIndex = 8;
@@ -172,7 +176,7 @@
             // hamBox
             // 
             this.hamBox.AutoSize = true;
-            this.hamBox.Location = new System.Drawing.Point(161, 134);
+            this.hamBox.Location = new System.Drawing.Point(6, 56);
             this.hamBox.Name = "hamBox";
             this.hamBox.Size = new System.Drawing.Size(48, 17);
             this.hamBox.TabIndex = 9;
@@ -182,7 +186,7 @@
             // mushroomsBox
             // 
             this.mushroomsBox.AutoSize = true;
-            this.mushroomsBox.Location = new System.Drawing.Point(161, 158);
+            this.mushroomsBox.Location = new System.Drawing.Point(6, 80);
             this.mushroomsBox.Name = "mushroomsBox";
             this.mushroomsBox.Size = new System.Drawing.Size(80, 17);
             this.mushroomsBox.TabIndex = 10;
@@ -328,13 +332,6 @@
             this.saucesBtn.TabIndex = 24;
             this.saucesBtn.Text = "A set of sauces";
             this.saucesBtn.UseVisualStyleBackColor = true;
-            // 
-            // billTreeView
-            // 
-            this.billTreeView.Location = new System.Drawing.Point(549, 86);
-            this.billTreeView.Name = "billTreeView";
-            this.billTreeView.Size = new System.Drawing.Size(239, 291);
-            this.billTreeView.TabIndex = 25;
             // 
             // label6
             // 
@@ -496,6 +493,28 @@
             this.emailTextBox.Text = "Email:";
             this.emailTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(549, 88);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(239, 277);
+            this.listBox1.TabIndex = 43;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox1.Controls.Add(this.cheeseBox);
+            this.groupBox1.Controls.Add(this.salamiBox);
+            this.groupBox1.Controls.Add(this.hamBox);
+            this.groupBox1.Controls.Add(this.mushroomsBox);
+            this.groupBox1.Location = new System.Drawing.Point(161, 79);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(157, 106);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,6 +522,8 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 552);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -519,7 +540,6 @@
             this.Controls.Add(this.teaBtn);
             this.Controls.Add(this.coffeeBtn);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.billTreeView);
             this.Controls.Add(this.saucesBtn);
             this.Controls.Add(this.saladBtn);
             this.Controls.Add(this.label5);
@@ -534,16 +554,12 @@
             this.Controls.Add(this.tomatoBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.addPizzaBtn);
-            this.Controls.Add(this.mushroomsBox);
-            this.Controls.Add(this.hamBox);
-            this.Controls.Add(this.salamiBox);
-            this.Controls.Add(this.cheeseBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.veneciaRadioBtn);
             this.Controls.Add(this.toscaRadioBtn);
             this.Controls.Add(this.vegetarianaRadioBtn);
-            this.Controls.Add(this.margerittaRadiotBtn);
+            this.Controls.Add(this.margherittaRadioBtn);
             this.Controls.Add(this.Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -551,6 +567,8 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,7 +577,7 @@
         #endregion
 
         private System.Windows.Forms.Label Menu;
-        private System.Windows.Forms.RadioButton margerittaRadiotBtn;
+        private System.Windows.Forms.RadioButton margherittaRadioBtn;
         private System.Windows.Forms.RadioButton vegetarianaRadioBtn;
         private System.Windows.Forms.RadioButton toscaRadioBtn;
         private System.Windows.Forms.RadioButton veneciaRadioBtn;
@@ -583,7 +601,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button saladBtn;
         private System.Windows.Forms.Button saucesBtn;
-        private System.Windows.Forms.TreeView billTreeView;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button coffeeBtn;
         private System.Windows.Forms.Button teaBtn;
@@ -600,6 +617,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

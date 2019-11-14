@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,18 +42,33 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RadioButton radioBtn = new RadioButton();
-            switch (radioBtn.Name)
+            RadioButton radioBtn = this.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
+            if (radioBtn != null)
             {
-                case "margherittaRadioBtn":
+                Debug.WriteLine("Button1_Click: Starting do switch");
+                switch (radioBtn.Name)
+                {
+                    case "margherittaRadioBtn":
+                        Debug.Write("Margheritta ");
 
-                    break;
-                case "vegetarianaRadioBtn":
-                    break;
-                case "toscaRadioBtn":
-                    break;
-                case "veneciaRadioBtn":
-                    break;
+                        break;
+                    case "vegetarianaRadioBtn":
+                        Debug.Write("Vegetariana");
+                        break;
+                    case "toscaRadioBtn":
+                        Debug.Write("Tosca");
+                        break;
+                    case "veneciaRadioBtn":
+                        Debug.Write("Venecia");
+                        break;
+                }
+            }
+            foreach (CheckBox checkBox in groupBox1.Controls)
+            {
+                if (checkBox.Checked)
+                {
+                    Debug.Write(", " +checkBox.Text);
+                }
             }
         }
 
@@ -112,6 +128,21 @@ namespace WindowsFormsApp4
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cheeseBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void margherittaRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
 
         }
