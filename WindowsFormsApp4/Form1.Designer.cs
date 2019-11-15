@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Menu = new System.Windows.Forms.Label();
             this.margherittaRadioBtn = new System.Windows.Forms.RadioButton();
             this.vegetarianaRadioBtn = new System.Windows.Forms.RadioButton();
@@ -69,9 +70,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.billBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -221,6 +224,7 @@
             this.tomatoBtn.TabIndex = 13;
             this.tomatoBtn.Text = "Tomato soup";
             this.tomatoBtn.UseVisualStyleBackColor = true;
+            this.tomatoBtn.Click += new System.EventHandler(this.tomatoBtn_Click);
             // 
             // chickenBtn
             // 
@@ -266,6 +270,7 @@
             this.schnitzelChipsBtn.TabIndex = 17;
             this.schnitzelChipsBtn.Text = "Schnitzel with chips";
             this.schnitzelChipsBtn.UseVisualStyleBackColor = true;
+            this.schnitzelChipsBtn.Click += new System.EventHandler(this.schnitzelChipsBtn_Click);
             // 
             // schnitzelRiceBtn
             // 
@@ -275,6 +280,7 @@
             this.schnitzelRiceBtn.TabIndex = 18;
             this.schnitzelRiceBtn.Text = "Schnitzel with rice";
             this.schnitzelRiceBtn.UseVisualStyleBackColor = true;
+            this.schnitzelRiceBtn.Click += new System.EventHandler(this.schnitzelRiceBtn_Click);
             // 
             // schnitzelPotatoBtn
             // 
@@ -284,6 +290,7 @@
             this.schnitzelPotatoBtn.TabIndex = 19;
             this.schnitzelPotatoBtn.Text = "Schnitzel with potatoes";
             this.schnitzelPotatoBtn.UseVisualStyleBackColor = true;
+            this.schnitzelPotatoBtn.Click += new System.EventHandler(this.schnitzelPotatoBtn_Click);
             // 
             // fishBtn
             // 
@@ -323,6 +330,7 @@
             this.saladBtn.TabIndex = 23;
             this.saladBtn.Text = "Salad bar";
             this.saladBtn.UseVisualStyleBackColor = true;
+            this.saladBtn.Click += new System.EventHandler(this.saladBtn_Click);
             // 
             // saucesBtn
             // 
@@ -332,6 +340,7 @@
             this.saucesBtn.TabIndex = 24;
             this.saucesBtn.Text = "A set of sauces";
             this.saucesBtn.UseVisualStyleBackColor = true;
+            this.saucesBtn.Click += new System.EventHandler(this.saucesBtn_Click);
             // 
             // label6
             // 
@@ -349,8 +358,9 @@
             this.coffeeBtn.Name = "coffeeBtn";
             this.coffeeBtn.Size = new System.Drawing.Size(75, 23);
             this.coffeeBtn.TabIndex = 27;
-            this.coffeeBtn.Text = "Kawa";
+            this.coffeeBtn.Text = "Coffee";
             this.coffeeBtn.UseVisualStyleBackColor = true;
+            this.coffeeBtn.Click += new System.EventHandler(this.coffeeBtn_Click);
             // 
             // teaBtn
             // 
@@ -358,8 +368,9 @@
             this.teaBtn.Name = "teaBtn";
             this.teaBtn.Size = new System.Drawing.Size(75, 23);
             this.teaBtn.TabIndex = 28;
-            this.teaBtn.Text = "Herbata";
+            this.teaBtn.Text = "Tea";
             this.teaBtn.UseVisualStyleBackColor = true;
+            this.teaBtn.Click += new System.EventHandler(this.teaBtn_Click);
             // 
             // colaBtn
             // 
@@ -369,6 +380,7 @@
             this.colaBtn.TabIndex = 29;
             this.colaBtn.Text = "Cola";
             this.colaBtn.UseVisualStyleBackColor = true;
+            this.colaBtn.Click += new System.EventHandler(this.colaBtn_Click);
             // 
             // commentTextBox
             // 
@@ -494,14 +506,14 @@
             this.emailTextBox.Text = "Email:";
             this.emailTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // listBox1
+            // billBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(549, 88);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(239, 277);
-            this.listBox1.TabIndex = 43;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.billBox.FormattingEnabled = true;
+            this.billBox.Location = new System.Drawing.Point(549, 88);
+            this.billBox.Name = "billBox";
+            this.billBox.Size = new System.Drawing.Size(239, 277);
+            this.billBox.TabIndex = 43;
+            this.billBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -516,6 +528,10 @@
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
+            // menuBindingSource
+            // 
+            this.menuBindingSource.DataMember = "menu";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,7 +540,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 552);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.billBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -567,9 +583,9 @@
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,8 +634,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox billBox;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.BindingSource menuBindingSource;
+        //private WindowsFormsApp4.MenuDataSet menuDataSet;
+        //private WindowsFormsApp4.MenuDataSetTableAdapters.menuTableAdapter menuTableAdapter;
     }
 }
 
