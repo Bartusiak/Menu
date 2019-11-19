@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="RestaurantModel.clients">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foods">
+      <EntityTypeMapping TypeName="RestaurantModel.foods">
+        <MappingFragment StoreEntitySet="foods">
+          <ScalarProperty Name="IdFood" ColumnName="IdFood" />
+          <ScalarProperty Name="NameFood" ColumnName="NameFood" />
+          <ScalarProperty Name="PriceFood" ColumnName="PriceFood" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="RestaurantModel.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdFood" ColumnName="IdFood" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PriceFood" ColumnName="PriceFood" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_history">
+      <EntityTypeMapping TypeName="RestaurantModel.order_history">
+        <MappingFragment StoreEntitySet="order_history">
+          <ScalarProperty Name="IdOrderHistory" ColumnName="IdOrderHistory" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+          <ScalarProperty Name="PriceTotal" ColumnName="PriceTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

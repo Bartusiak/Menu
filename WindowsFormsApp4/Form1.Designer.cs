@@ -44,7 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tomatoBtn = new System.Windows.Forms.Button();
             this.chickenBtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.schnitzelChipsBtn = new System.Windows.Forms.Button();
             this.schnitzelRiceBtn = new System.Windows.Forms.Button();
@@ -73,8 +72,27 @@
             this.billBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.restaurantDataSet = new WindowsFormsApp4.RestaurantDataSet();
+            this.restaurantDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.order_detailsTableAdapter = new WindowsFormsApp4.RestaurantDataSetTableAdapters.order_detailsTableAdapter();
+            this.amount1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -235,21 +253,6 @@
             this.chickenBtn.Text = "Chicken soup";
             this.chickenBtn.UseVisualStyleBackColor = true;
             this.chickenBtn.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Margheritta - 20 zł",
-            "Vegetariana - 22 zł",
-            "Tosca - 25 zł",
-            "Venecia - 25 zł"});
-            this.comboBox1.Location = new System.Drawing.Point(19, 181);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 15;
-            this.comboBox1.Visible = false;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -508,11 +511,15 @@
             // 
             // billBox
             // 
+            this.billBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.orderdetailsBindingSource, "PriceFood", true));
+            this.billBox.DataSource = this.orderdetailsBindingSource;
+            this.billBox.DisplayMember = "IdOrder";
             this.billBox.FormattingEnabled = true;
             this.billBox.Location = new System.Drawing.Point(549, 88);
             this.billBox.Name = "billBox";
             this.billBox.Size = new System.Drawing.Size(239, 277);
             this.billBox.TabIndex = 43;
+            this.billBox.ValueMember = "IdFood";
             this.billBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // groupBox1
@@ -533,6 +540,133 @@
             this.menuBindingSource.DataMember = "menu";
             this.menuBindingSource.CurrentChanged += new System.EventHandler(this.menuBindingSource_CurrentChanged);
             // 
+            // restaurantDataSet
+            // 
+            this.restaurantDataSet.DataSetName = "RestaurantDataSet";
+            this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // restaurantDataSetBindingSource
+            // 
+            this.restaurantDataSetBindingSource.DataSource = this.restaurantDataSet;
+            this.restaurantDataSetBindingSource.Position = 0;
+            // 
+            // orderdetailsBindingSource
+            // 
+            this.orderdetailsBindingSource.DataMember = "order_details";
+            this.orderdetailsBindingSource.DataSource = this.restaurantDataSet;
+            // 
+            // order_detailsTableAdapter
+            // 
+            this.order_detailsTableAdapter.ClearBeforeFill = true;
+            // 
+            // amount1
+            // 
+            this.amount1.AutoSize = true;
+            this.amount1.Location = new System.Drawing.Point(444, 91);
+            this.amount1.Name = "amount1";
+            this.amount1.Size = new System.Drawing.Size(13, 13);
+            this.amount1.TabIndex = 45;
+            this.amount1.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(444, 121);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(13, 13);
+            this.label14.TabIndex = 46;
+            this.label14.Text = "0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(171, 272);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(13, 13);
+            this.label15.TabIndex = 47;
+            this.label15.Text = "0";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(171, 301);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 13);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "0";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(171, 330);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 13);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "0";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(171, 359);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(13, 13);
+            this.label18.TabIndex = 50;
+            this.label18.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(171, 388);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(13, 13);
+            this.label19.TabIndex = 51;
+            this.label19.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(367, 272);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(13, 13);
+            this.label20.TabIndex = 52;
+            this.label20.Text = "0";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(367, 301);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(13, 13);
+            this.label21.TabIndex = 53;
+            this.label21.Text = "0";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(464, 272);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(13, 13);
+            this.label22.TabIndex = 54;
+            this.label22.Text = "0";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(464, 301);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 13);
+            this.label23.TabIndex = 55;
+            this.label23.Text = "0";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(464, 330);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(13, 13);
+            this.label24.TabIndex = 56;
+            this.label24.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,6 +674,18 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 552);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.amount1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.billBox);
             this.Controls.Add(this.emailTextBox);
@@ -567,7 +713,6 @@
             this.Controls.Add(this.schnitzelRiceBtn);
             this.Controls.Add(this.schnitzelChipsBtn);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.chickenBtn);
             this.Controls.Add(this.tomatoBtn);
             this.Controls.Add(this.label3);
@@ -584,9 +729,13 @@
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,7 +758,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button tomatoBtn;
         private System.Windows.Forms.Button chickenBtn;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button schnitzelChipsBtn;
         private System.Windows.Forms.Button schnitzelRiceBtn;
@@ -638,6 +786,22 @@
         private System.Windows.Forms.ListBox billBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.BindingSource menuBindingSource;
+        private System.Windows.Forms.BindingSource restaurantDataSetBindingSource;
+        private RestaurantDataSet restaurantDataSet;
+        private System.Windows.Forms.BindingSource orderdetailsBindingSource;
+        private RestaurantDataSetTableAdapters.order_detailsTableAdapter order_detailsTableAdapter;
+        private System.Windows.Forms.Label amount1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
         //private WindowsFormsApp4.MenuDataSet menuDataSet;
         //private WindowsFormsApp4.MenuDataSetTableAdapters.menuTableAdapter menuTableAdapter;
     }

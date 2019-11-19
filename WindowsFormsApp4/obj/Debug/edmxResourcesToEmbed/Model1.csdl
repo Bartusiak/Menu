@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__IdCli__412EB0B6" FromRole="clients" ToRole="order_details" />
+  </EntityType>
+  <EntityType Name="foods">
+    <Key>
+      <PropertyRef Name="IdFood" />
+    </Key>
+    <Property Name="IdFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameFood" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PriceFood" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__IdFoo__3D5E1FD2" FromRole="foods" ToRole="order_details" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+    </Key>
+    <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdFood" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="PriceFood" Type="Int64" Nullable="false" />
+    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="clients" Relationship="Self.FK__order_det__IdCli__412EB0B6" FromRole="order_details" ToRole="clients" />
+    <NavigationProperty Name="foods" Relationship="Self.FK__order_det__IdFoo__3D5E1FD2" FromRole="order_details" ToRole="foods" />
+    <NavigationProperty Name="order_history" Relationship="Self.FK__order_his__IdOrd__403A8C7D" FromRole="order_details" ToRole="order_history" />
+  </EntityType>
+  <EntityType Name="order_history">
+    <Key>
+      <PropertyRef Name="IdOrderHistory" />
+    </Key>
+    <Property Name="IdOrderHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOrder" Type="Int32" Nullable="false" />
+    <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PriceTotal" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK__order_his__IdOrd__403A8C7D" FromRole="order_history" ToRole="order_details" />
+  </EntityType>
+  <Association Name="FK__order_det__IdCli__412EB0B6">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__IdFoo__3D5E1FD2">
+    <End Role="foods" Type="Self.foods" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="foods">
+        <PropertyRef Name="IdFood" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="IdFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_his__IdOrd__403A8C7D">
+    <End Role="order_details" Type="Self.order_details" Multiplicity="1" />
+    <End Role="order_history" Type="Self.order_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_details">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clients" EntityType="Self.clients" />
+    <EntitySet Name="foods" EntityType="Self.foods" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" />
+    <EntitySet Name="order_history" EntityType="Self.order_history" />
+    <AssociationSet Name="FK__order_det__IdCli__412EB0B6" Association="Self.FK__order_det__IdCli__412EB0B6">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__IdFoo__3D5E1FD2" Association="Self.FK__order_det__IdFoo__3D5E1FD2">
+      <End Role="foods" EntitySet="foods" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_his__IdOrd__403A8C7D" Association="Self.FK__order_his__IdOrd__403A8C7D">
+      <End Role="order_details" EntitySet="order_details" />
+      <End Role="order_history" EntitySet="order_history" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

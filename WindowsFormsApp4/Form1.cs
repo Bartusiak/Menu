@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace WindowsFormsApp4
 {
@@ -161,7 +163,36 @@ namespace WindowsFormsApp4
 
         private void button14_Click(object sender, EventArgs e)
         {
-
+            Debug.WriteLine("Button14_Click: Clicked submit, declaring pattern to check email. ");
+            String pattern2 = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
+            Regex email = new Regex(pattern2);
+            Match match = email.Match(emailTextBox.Text);
+            if (match.Success)
+            {
+                Debug.WriteLine("Button14_Click: Match success. ");
+                Debug.WriteLine("Button14_Click: Trying to send mail with the bill ");
+                // We need free smtp server to send mail without using password
+                MailMessage message = new MailMessage("mailofrestaurant@domain.com", emailTextBox.Text, "Your order from restaurant", "Here we want to put the bill later");
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com ",587);
+                smtpClient.Credentials = new System.Net.NetworkCredential("mailofrestaurant@domain.com", "passwordemail");
+                smtpClient.EnableSsl = true;
+                Debug.WriteLine("SmtpClient: Mail is sending to: " + emailTextBox.Text);
+                try
+                {
+                    smtpClient.Send(message);
+                    Debug.WriteLine("SmtpClient: Mail sent");
+                }catch(Exception ex)
+                {
+                    Debug.WriteLine("SmtpClient: Exception message: " + ex.Message);
+                }
+                
+                
+            }
+            else
+            {
+                MessageBox.Show("You writed incorrect email");
+            }
         }
 
 
@@ -263,6 +294,13 @@ namespace WindowsFormsApp4
 
         private void menuBindingSource_CurrentChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'restaurantDataSet.order_details' . Możesz go przenieść lub usunąć.
+            this.order_detailsTableAdapter.Fill(this.restaurantDataSet.order_details);
 
         }
     }
