@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp4", "WindowsFormsApp4\WindowsFormsApp4.csproj", "{2C46F994-E9D6-4BC2-8125-C7237227A1A6}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Restaurant", "Restaurant\Restaurant.sqlproj", "{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +15,6 @@ Global
 		{2C46F994-E9D6-4BC2-8125-C7237227A1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C46F994-E9D6-4BC2-8125-C7237227A1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C46F994-E9D6-4BC2-8125-C7237227A1A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Release|Any CPU.Build.0 = Release|Any CPU
-		{805D52EF-7FCE-4FA2-88D2-DFCFE4B37239}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

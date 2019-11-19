@@ -260,5 +260,10 @@ namespace WindowsFormsApp4
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
         }
+
+        private void menuBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

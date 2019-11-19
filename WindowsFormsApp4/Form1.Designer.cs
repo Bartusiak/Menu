@@ -531,6 +531,7 @@
             // menuBindingSource
             // 
             this.menuBindingSource.DataMember = "menu";
+            this.menuBindingSource.CurrentChanged += new System.EventHandler(this.menuBindingSource_CurrentChanged);
             // 
             // Form1
             // 
