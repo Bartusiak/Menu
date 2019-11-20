@@ -10,13 +10,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
+using System.Data.SqlClient;
+using System.Collections;
 
 namespace WindowsFormsApp4
 {
     public partial class Form1 : Form
     {
+        ArrayList idOrderFood = new ArrayList();
+        ArrayList amountFood = new ArrayList();
+        SqlConnection connection = new SqlConnection("Data Source=PUSSYROAD;Initial Catalog=SQLEXPRESS;User ID=sa;password=restauracja");
         int totality = 0;
-        String tempFood = "";
+        int amount = 0;
 
         public Form1()
         {
@@ -55,27 +60,41 @@ namespace WindowsFormsApp4
                 {
                     case "margherittaRadioBtn":
                         //   Debug.Write("Margheritta ");
+                        //connection.Open();
                         tempPizzaString = "Margheritta ";
                         Debug.WriteLine("Switch: Add to totality pizza price - 20");
                         totality = totality + 20;
+                        idOrderFood.Add(1);
+                        amountFood.Add(1);
+                        billBox.Items.Add(tempPizzaString + "           20zł");
+                        //String query = "INSERT INTO dbo.order_details (IdOrder,IdFood,Amount,PriceFood"
                         break;
                     case "vegetarianaRadioBtn":
                         ///   Debug.Write("Vegetariana");
                         tempPizzaString = "Vegetariana ";
                         Debug.WriteLine("Switch: Add to totality pizza price - 22");
                         totality = totality + 22;
+                        idOrderFood.Add(2);
+                        amountFood.Add(1);
+                        billBox.Items.Add(tempPizzaString + "           22zł");
                         break;
                     case "toscaRadioBtn":
                         //  Debug.Write("Tosca");
                         tempPizzaString = "Tosca ";
                         Debug.WriteLine("Switch: Add to totality pizza price - 25");
                         totality = totality + 25;
+                        idOrderFood.Add(3);
+                        amountFood.Add(1);
+                        billBox.Items.Add(tempPizzaString + "           25zł");
                         break;
                     case "veneciaRadioBtn":
                         //   Debug.Write("Venecia");
                         tempPizzaString = "Venecia ";
                         Debug.WriteLine("Switch Add to totality pizza price - 25");
                         totality= totality + 25;
+                        idOrderFood.Add(4);
+                        amountFood.Add(1);
+                        billBox.Items.Add(tempPizzaString + "           25zł");
                         break;
                 }
             }
@@ -88,6 +107,29 @@ namespace WindowsFormsApp4
                     tempPizzaString = tempPizzaString + " + " + checkBox.Text;
                     Debug.WriteLine("Foreach: Add to totality addon price - 2");
                     totality = totality + 2;
+                    switch (checkBox.Text)
+                    {
+                        case "Double chesse":
+                            idOrderFood.Add(5);
+                            amountFood.Add(1);
+                            billBox.Items.Add(checkBox.Text + "         2zł");
+                            break;
+                        case "Salami":
+                            idOrderFood.Add(6);
+                            amountFood.Add(1);
+                            billBox.Items.Add(checkBox.Text + "         2zł");
+                            break;
+                        case "Ham":
+                            idOrderFood.Add(7);
+                            amountFood.Add(1);
+                            billBox.Items.Add(checkBox.Text + "         2zł");
+                            break;
+                        case "Mushrooms":
+                            idOrderFood.Add(8);
+                            amountFood.Add(1);
+                            billBox.Items.Add(checkBox.Text + "         2zł");
+                            break;
+                    }
                 }
             }
             Debug.WriteLine("Button1_Clicked: Pizza ordered: " + tempPizzaString);
@@ -102,11 +144,16 @@ namespace WindowsFormsApp4
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             Debug.WriteLine("Button3_Clicked: Chicken soup ordered: ");
+            amount = Convert.ToInt32(numericUpDownChickenSoup.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 10;
+            totality = totality + (amount*10);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(10);
+            amountFood.Add(amount);
+            billBox.Items.Add("Chicken Soup             " + amount + "x" +10 );
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -117,19 +164,27 @@ namespace WindowsFormsApp4
         private void button7_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Button7_Clicked: Fish with chips ordered: ");
+            amount = Convert.ToInt32(numericUpDownFishChips.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 28;
+            totality = totality + (amount*28);
             Debug.WriteLine("Button7_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(14);
+            amountFood.Add(amount);
+            billBox.Items.Add("Fish with chips          " + amount + "x" +28);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Button8_Clicked: Hungarian cake ordered: ");
+            amount = Convert.ToInt32(numericUpDownCake.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 27;
+            totality = totality + (amount*27);
             Debug.WriteLine("Button8_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(15);
+            amountFood.Add(amount);
+            billBox.Items.Add("Hungarian Cake           " + amount + "x" + 27);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -154,11 +209,11 @@ namespace WindowsFormsApp4
 
         private void button15_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Button15_Clicked: Locking the comment");
+            /*Debug.WriteLine("Button15_Clicked: Locking the comment");
             commentTextBox.Enabled = false;
             String comment = "";
             comment = commentTextBox.Text;
-            Debug.WriteLine("Button15_Clicked: Comment added - " + comment);
+            Debug.WriteLine("Button15_Clicked: Comment added - " + comment);*/
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -214,82 +269,118 @@ namespace WindowsFormsApp4
         private void schnitzelChipsBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("SchnitzelChipsBtn_Clicked: Schnitzel with Chips ordered: ");
+            amount = Convert.ToInt32(numericUpDownSchnitzelChip.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 30;
-            Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
+            totality = totality + (amount*30);
+            Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality );
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(11);
+            amountFood.Add(amount);
+            billBox.Items.Add("Schnitzel with Chips             " + amount + "x" + 10);
         }
 
         private void schnitzelRiceBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("SchnitzelRice_Clicked: Schnitzel with Rice ordered: ");
+            amount = Convert.ToInt32(numericUpDownSchnitzelRice.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 30;
+            totality = totality + (amount*30);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(12);
+            amountFood.Add(amount);
+            billBox.Items.Add("Schnitzel with Rice              " + amount + "x" + 10);
         }
 
         private void schnitzelPotatoBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("SchnitzelPotato_Clicked: Schnitzel with Potatoes ordered: ");
+            amount = Convert.ToInt32(numericUpDownSchnitzelPotatoes.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 30;
+            totality = totality + (amount*30);
             Debug.WriteLine("SchnitzelPotato_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(13);
+            amountFood.Add(amount);
+            billBox.Items.Add("Chicken Soup             " + amount + "x" + 10);
         }
 
         private void saladBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("SaladBtn_Clicked: Salad bar ordered: ");
+            amount = Convert.ToInt32(numericUpDownSalad.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 5;
+            totality = totality + (amount*5);
             Debug.WriteLine("SaladBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(17);
+            amountFood.Add(amount);
+            billBox.Items.Add("Salad bar            " + amount + "x" + 10);
         }
 
         private void saucesBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("SaucesBtn_Clicked: A set of sauces ordered: ");
+            amount = Convert.ToInt32(numericUpDownSauces.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 6;
+            totality = totality + (amount*6);
             Debug.WriteLine("SaucesBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(18);
+            amountFood.Add(amount);
+            billBox.Items.Add("A set of sauces          " + amount + "x" + 10);
         }
 
         private void tomatoBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("TomatoBtn_Clicked: Tomato soup ordered: ");
+            amount = Convert.ToInt32(numericUpDownTomatoSoup.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 12;
+            totality = totality + (amount*12);
             Debug.WriteLine("TomatoBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(9);
+            amountFood.Add(amount);
+            billBox.Items.Add("Tomato Soup          " + amount + "x" + 10);
         }
 
         private void coffeeBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("CoffeeBtn_Clicked: Coffee ordered: ");
+            amount = Convert.ToInt32(numericUpDownCoffee.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 5;
+            totality = totality + (amount*5);
             Debug.WriteLine("CoffeeBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(19);
+            amountFood.Add(amount);
+            billBox.Items.Add("Coffee           " + amount + "x" + 10);
         }
 
         private void teaBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("TeaBtn_Clicked: Tea ordered: ");
+            amount = Convert.ToInt32(numericUpDownTea.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 5;
+            totality = totality + (amount*5);
             Debug.WriteLine("TeaBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(20);
+            amountFood.Add(amount);
+            billBox.Items.Add("Tea          " + amount+ "x" + 10);
         }
 
         private void colaBtn_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("ColaBtn_Clicked: Cola ordered: ");
+            amount = Convert.ToInt32(numericUpDownCola.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + 5;
+            totality = totality + (amount*5);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
+            idOrderFood.Add(21);
+            amountFood.Add(amount);
+            billBox.Items.Add("Cola             " + amount +"x"+ 10);
         }
 
         private void menuBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -302,6 +393,14 @@ namespace WindowsFormsApp4
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'restaurantDataSet.order_details' . Możesz go przenieść lub usunąć.
             this.order_detailsTableAdapter.Fill(this.restaurantDataSet.order_details);
 
+        }
+
+        private void emailTextBox_Enter(object sender, EventArgs e)
+        {
+            if (emailTextBox.Text == "Email:")
+            {
+                emailTextBox.Text = "";
+            }
         }
     }
 }

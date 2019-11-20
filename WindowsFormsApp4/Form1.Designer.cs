@@ -70,29 +70,41 @@
             this.label13 = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.billBox = new System.Windows.Forms.ListBox();
+            this.orderdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.restaurantDataSet = new WindowsFormsApp4.RestaurantDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.restaurantDataSet = new WindowsFormsApp4.RestaurantDataSet();
             this.restaurantDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.order_detailsTableAdapter = new WindowsFormsApp4.RestaurantDataSetTableAdapters.order_detailsTableAdapter();
-            this.amount1 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.numericUpDownSchnitzelChip = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSalad = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCoffee = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSchnitzelRice = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSchnitzelPotatoes = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFishChips = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCake = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSauces = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTea = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownCola = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTomatoSoup = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownChickenSoup = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelChip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCoffee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelRice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelPotatoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFishChips)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCake)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSauces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCola)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTomatoSoup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChickenSoup)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -236,21 +248,21 @@
             // 
             // tomatoBtn
             // 
-            this.tomatoBtn.Location = new System.Drawing.Point(348, 86);
+            this.tomatoBtn.Location = new System.Drawing.Point(347, 83);
             this.tomatoBtn.Name = "tomatoBtn";
-            this.tomatoBtn.Size = new System.Drawing.Size(90, 23);
+            this.tomatoBtn.Size = new System.Drawing.Size(114, 23);
             this.tomatoBtn.TabIndex = 13;
-            this.tomatoBtn.Text = "Tomato soup";
+            this.tomatoBtn.Text = "Tomato soup - 12zł";
             this.tomatoBtn.UseVisualStyleBackColor = true;
             this.tomatoBtn.Click += new System.EventHandler(this.tomatoBtn_Click);
             // 
             // chickenBtn
             // 
-            this.chickenBtn.Location = new System.Drawing.Point(348, 115);
+            this.chickenBtn.Location = new System.Drawing.Point(347, 112);
             this.chickenBtn.Name = "chickenBtn";
-            this.chickenBtn.Size = new System.Drawing.Size(90, 23);
+            this.chickenBtn.Size = new System.Drawing.Size(114, 23);
             this.chickenBtn.TabIndex = 14;
-            this.chickenBtn.Text = "Chicken soup";
+            this.chickenBtn.Text = "Chicken soup - 10zł";
             this.chickenBtn.UseVisualStyleBackColor = true;
             this.chickenBtn.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -267,51 +279,51 @@
             // 
             // schnitzelChipsBtn
             // 
-            this.schnitzelChipsBtn.Location = new System.Drawing.Point(19, 267);
+            this.schnitzelChipsBtn.Location = new System.Drawing.Point(21, 267);
             this.schnitzelChipsBtn.Name = "schnitzelChipsBtn";
-            this.schnitzelChipsBtn.Size = new System.Drawing.Size(146, 23);
+            this.schnitzelChipsBtn.Size = new System.Drawing.Size(161, 23);
             this.schnitzelChipsBtn.TabIndex = 17;
-            this.schnitzelChipsBtn.Text = "Schnitzel with chips";
+            this.schnitzelChipsBtn.Text = "Schnitzel with chips - 30zł";
             this.schnitzelChipsBtn.UseVisualStyleBackColor = true;
             this.schnitzelChipsBtn.Click += new System.EventHandler(this.schnitzelChipsBtn_Click);
             // 
             // schnitzelRiceBtn
             // 
-            this.schnitzelRiceBtn.Location = new System.Drawing.Point(19, 296);
+            this.schnitzelRiceBtn.Location = new System.Drawing.Point(21, 296);
             this.schnitzelRiceBtn.Name = "schnitzelRiceBtn";
-            this.schnitzelRiceBtn.Size = new System.Drawing.Size(146, 23);
+            this.schnitzelRiceBtn.Size = new System.Drawing.Size(161, 23);
             this.schnitzelRiceBtn.TabIndex = 18;
-            this.schnitzelRiceBtn.Text = "Schnitzel with rice";
+            this.schnitzelRiceBtn.Text = "Schnitzel with rice - 30zł";
             this.schnitzelRiceBtn.UseVisualStyleBackColor = true;
             this.schnitzelRiceBtn.Click += new System.EventHandler(this.schnitzelRiceBtn_Click);
             // 
             // schnitzelPotatoBtn
             // 
-            this.schnitzelPotatoBtn.Location = new System.Drawing.Point(19, 325);
+            this.schnitzelPotatoBtn.Location = new System.Drawing.Point(21, 325);
             this.schnitzelPotatoBtn.Name = "schnitzelPotatoBtn";
-            this.schnitzelPotatoBtn.Size = new System.Drawing.Size(146, 23);
+            this.schnitzelPotatoBtn.Size = new System.Drawing.Size(161, 23);
             this.schnitzelPotatoBtn.TabIndex = 19;
-            this.schnitzelPotatoBtn.Text = "Schnitzel with potatoes";
+            this.schnitzelPotatoBtn.Text = "Schnitzel with potatoes - 30zł";
             this.schnitzelPotatoBtn.UseVisualStyleBackColor = true;
             this.schnitzelPotatoBtn.Click += new System.EventHandler(this.schnitzelPotatoBtn_Click);
             // 
             // fishBtn
             // 
-            this.fishBtn.Location = new System.Drawing.Point(19, 354);
+            this.fishBtn.Location = new System.Drawing.Point(21, 354);
             this.fishBtn.Name = "fishBtn";
-            this.fishBtn.Size = new System.Drawing.Size(146, 23);
+            this.fishBtn.Size = new System.Drawing.Size(161, 23);
             this.fishBtn.TabIndex = 20;
-            this.fishBtn.Text = "Fish with chips";
+            this.fishBtn.Text = "Fish with chips - 28zł";
             this.fishBtn.UseVisualStyleBackColor = true;
             this.fishBtn.Click += new System.EventHandler(this.button7_Click);
             // 
             // cakeBtn
             // 
-            this.cakeBtn.Location = new System.Drawing.Point(19, 383);
+            this.cakeBtn.Location = new System.Drawing.Point(21, 383);
             this.cakeBtn.Name = "cakeBtn";
-            this.cakeBtn.Size = new System.Drawing.Size(146, 23);
+            this.cakeBtn.Size = new System.Drawing.Size(161, 23);
             this.cakeBtn.TabIndex = 21;
-            this.cakeBtn.Text = "Hungarian cake";
+            this.cakeBtn.Text = "Hungarian cake - 27zł";
             this.cakeBtn.UseVisualStyleBackColor = true;
             this.cakeBtn.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -319,7 +331,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(187, 244);
+            this.label5.Location = new System.Drawing.Point(226, 244);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(177, 20);
             this.label5.TabIndex = 22;
@@ -327,21 +339,21 @@
             // 
             // saladBtn
             // 
-            this.saladBtn.Location = new System.Drawing.Point(191, 266);
+            this.saladBtn.Location = new System.Drawing.Point(230, 266);
             this.saladBtn.Name = "saladBtn";
             this.saladBtn.Size = new System.Drawing.Size(173, 23);
             this.saladBtn.TabIndex = 23;
-            this.saladBtn.Text = "Salad bar";
+            this.saladBtn.Text = "Salad bar - 5zł";
             this.saladBtn.UseVisualStyleBackColor = true;
             this.saladBtn.Click += new System.EventHandler(this.saladBtn_Click);
             // 
             // saucesBtn
             // 
-            this.saucesBtn.Location = new System.Drawing.Point(191, 296);
+            this.saucesBtn.Location = new System.Drawing.Point(230, 296);
             this.saucesBtn.Name = "saucesBtn";
             this.saucesBtn.Size = new System.Drawing.Size(173, 23);
             this.saucesBtn.TabIndex = 24;
-            this.saucesBtn.Text = "A set of sauces";
+            this.saucesBtn.Text = "A set of sauces - 6zł";
             this.saucesBtn.UseVisualStyleBackColor = true;
             this.saucesBtn.Click += new System.EventHandler(this.saucesBtn_Click);
             // 
@@ -349,7 +361,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(382, 242);
+            this.label6.Location = new System.Drawing.Point(449, 244);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 20);
             this.label6.TabIndex = 26;
@@ -357,31 +369,31 @@
             // 
             // coffeeBtn
             // 
-            this.coffeeBtn.Location = new System.Drawing.Point(386, 265);
+            this.coffeeBtn.Location = new System.Drawing.Point(453, 267);
             this.coffeeBtn.Name = "coffeeBtn";
             this.coffeeBtn.Size = new System.Drawing.Size(75, 23);
             this.coffeeBtn.TabIndex = 27;
-            this.coffeeBtn.Text = "Coffee";
+            this.coffeeBtn.Text = "Coffee - 5zł";
             this.coffeeBtn.UseVisualStyleBackColor = true;
             this.coffeeBtn.Click += new System.EventHandler(this.coffeeBtn_Click);
             // 
             // teaBtn
             // 
-            this.teaBtn.Location = new System.Drawing.Point(386, 296);
+            this.teaBtn.Location = new System.Drawing.Point(453, 297);
             this.teaBtn.Name = "teaBtn";
             this.teaBtn.Size = new System.Drawing.Size(75, 23);
             this.teaBtn.TabIndex = 28;
-            this.teaBtn.Text = "Tea";
+            this.teaBtn.Text = "Tea - 5zł";
             this.teaBtn.UseVisualStyleBackColor = true;
             this.teaBtn.Click += new System.EventHandler(this.teaBtn_Click);
             // 
             // colaBtn
             // 
-            this.colaBtn.Location = new System.Drawing.Point(386, 325);
+            this.colaBtn.Location = new System.Drawing.Point(453, 327);
             this.colaBtn.Name = "colaBtn";
             this.colaBtn.Size = new System.Drawing.Size(75, 23);
             this.colaBtn.TabIndex = 29;
-            this.colaBtn.Text = "Cola";
+            this.colaBtn.Text = "Cola - 5zł";
             this.colaBtn.UseVisualStyleBackColor = true;
             this.colaBtn.Click += new System.EventHandler(this.colaBtn_Click);
             // 
@@ -408,7 +420,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(546, 389);
+            this.label8.Location = new System.Drawing.Point(575, 389);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 32;
@@ -418,7 +430,7 @@
             // totalityTextBox
             // 
             this.totalityTextBox.Enabled = false;
-            this.totalityTextBox.Location = new System.Drawing.Point(592, 386);
+            this.totalityTextBox.Location = new System.Drawing.Point(621, 386);
             this.totalityTextBox.Name = "totalityTextBox";
             this.totalityTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.totalityTextBox.Size = new System.Drawing.Size(196, 20);
@@ -439,7 +451,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(545, 56);
+            this.label9.Location = new System.Drawing.Point(574, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 20);
             this.label9.TabIndex = 36;
@@ -447,7 +459,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(713, 501);
+            this.submitBtn.Location = new System.Drawing.Point(742, 501);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(75, 23);
             this.submitBtn.TabIndex = 37;
@@ -501,26 +513,34 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(577, 475);
+            this.emailTextBox.Location = new System.Drawing.Point(606, 475);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.emailTextBox.Size = new System.Drawing.Size(211, 20);
             this.emailTextBox.TabIndex = 42;
             this.emailTextBox.Text = "Email:";
             this.emailTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.emailTextBox.Enter += new System.EventHandler(this.emailTextBox_Enter);
             // 
             // billBox
             // 
             this.billBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.orderdetailsBindingSource, "PriceFood", true));
-            this.billBox.DataSource = this.orderdetailsBindingSource;
-            this.billBox.DisplayMember = "IdOrder";
             this.billBox.FormattingEnabled = true;
-            this.billBox.Location = new System.Drawing.Point(549, 88);
+            this.billBox.Location = new System.Drawing.Point(578, 88);
             this.billBox.Name = "billBox";
             this.billBox.Size = new System.Drawing.Size(239, 277);
             this.billBox.TabIndex = 43;
-            this.billBox.ValueMember = "IdFood";
             this.billBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // orderdetailsBindingSource
+            // 
+            this.orderdetailsBindingSource.DataMember = "order_details";
+            this.orderdetailsBindingSource.DataSource = this.restaurantDataSet;
+            // 
+            // restaurantDataSet
+            // 
+            this.restaurantDataSet.DataSetName = "RestaurantDataSet";
+            this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox1
             // 
@@ -540,132 +560,223 @@
             this.menuBindingSource.DataMember = "menu";
             this.menuBindingSource.CurrentChanged += new System.EventHandler(this.menuBindingSource_CurrentChanged);
             // 
-            // restaurantDataSet
-            // 
-            this.restaurantDataSet.DataSetName = "RestaurantDataSet";
-            this.restaurantDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // restaurantDataSetBindingSource
             // 
             this.restaurantDataSetBindingSource.DataSource = this.restaurantDataSet;
             this.restaurantDataSetBindingSource.Position = 0;
             // 
-            // orderdetailsBindingSource
-            // 
-            this.orderdetailsBindingSource.DataMember = "order_details";
-            this.orderdetailsBindingSource.DataSource = this.restaurantDataSet;
-            // 
             // order_detailsTableAdapter
             // 
             this.order_detailsTableAdapter.ClearBeforeFill = true;
             // 
-            // amount1
+            // numericUpDownSchnitzelChip
             // 
-            this.amount1.AutoSize = true;
-            this.amount1.Location = new System.Drawing.Point(444, 91);
-            this.amount1.Name = "amount1";
-            this.amount1.Size = new System.Drawing.Size(13, 13);
-            this.amount1.TabIndex = 45;
-            this.amount1.Text = "0";
+            this.numericUpDownSchnitzelChip.Location = new System.Drawing.Point(185, 268);
+            this.numericUpDownSchnitzelChip.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownSchnitzelChip.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSchnitzelChip.Name = "numericUpDownSchnitzelChip";
+            this.numericUpDownSchnitzelChip.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDownSchnitzelChip.TabIndex = 57;
+            this.numericUpDownSchnitzelChip.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label14
+            // numericUpDownSalad
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(444, 121);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(13, 13);
-            this.label14.TabIndex = 46;
-            this.label14.Text = "0";
+            this.numericUpDownSalad.Location = new System.Drawing.Point(407, 268);
+            this.numericUpDownSalad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSalad.Name = "numericUpDownSalad";
+            this.numericUpDownSalad.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownSalad.TabIndex = 59;
+            this.numericUpDownSalad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label15
+            // numericUpDownCoffee
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(171, 272);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(13, 13);
-            this.label15.TabIndex = 47;
-            this.label15.Text = "0";
+            this.numericUpDownCoffee.Location = new System.Drawing.Point(532, 268);
+            this.numericUpDownCoffee.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCoffee.Name = "numericUpDownCoffee";
+            this.numericUpDownCoffee.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownCoffee.TabIndex = 60;
+            this.numericUpDownCoffee.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label16
+            // numericUpDownSchnitzelRice
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(171, 301);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(13, 13);
-            this.label16.TabIndex = 48;
-            this.label16.Text = "0";
+            this.numericUpDownSchnitzelRice.Location = new System.Drawing.Point(186, 297);
+            this.numericUpDownSchnitzelRice.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSchnitzelRice.Name = "numericUpDownSchnitzelRice";
+            this.numericUpDownSchnitzelRice.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownSchnitzelRice.TabIndex = 61;
+            this.numericUpDownSchnitzelRice.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label17
+            // numericUpDownSchnitzelPotatoes
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(171, 330);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(13, 13);
-            this.label17.TabIndex = 49;
-            this.label17.Text = "0";
+            this.numericUpDownSchnitzelPotatoes.Location = new System.Drawing.Point(186, 326);
+            this.numericUpDownSchnitzelPotatoes.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSchnitzelPotatoes.Name = "numericUpDownSchnitzelPotatoes";
+            this.numericUpDownSchnitzelPotatoes.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownSchnitzelPotatoes.TabIndex = 62;
+            this.numericUpDownSchnitzelPotatoes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label18
+            // numericUpDownFishChips
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(171, 359);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(13, 13);
-            this.label18.TabIndex = 50;
-            this.label18.Text = "0";
+            this.numericUpDownFishChips.Location = new System.Drawing.Point(186, 356);
+            this.numericUpDownFishChips.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownFishChips.Name = "numericUpDownFishChips";
+            this.numericUpDownFishChips.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownFishChips.TabIndex = 63;
+            this.numericUpDownFishChips.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label19
+            // numericUpDownCake
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(171, 388);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(13, 13);
-            this.label19.TabIndex = 51;
-            this.label19.Text = "0";
+            this.numericUpDownCake.Location = new System.Drawing.Point(186, 384);
+            this.numericUpDownCake.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCake.Name = "numericUpDownCake";
+            this.numericUpDownCake.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownCake.TabIndex = 64;
+            this.numericUpDownCake.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label20
+            // numericUpDownSauces
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(367, 272);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(13, 13);
-            this.label20.TabIndex = 52;
-            this.label20.Text = "0";
+            this.numericUpDownSauces.Location = new System.Drawing.Point(407, 297);
+            this.numericUpDownSauces.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSauces.Name = "numericUpDownSauces";
+            this.numericUpDownSauces.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownSauces.TabIndex = 65;
+            this.numericUpDownSauces.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label21
+            // numericUpDownTea
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(367, 301);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(13, 13);
-            this.label21.TabIndex = 53;
-            this.label21.Text = "0";
+            this.numericUpDownTea.Location = new System.Drawing.Point(532, 298);
+            this.numericUpDownTea.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTea.Name = "numericUpDownTea";
+            this.numericUpDownTea.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownTea.TabIndex = 66;
+            this.numericUpDownTea.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label22
+            // numericUpDownCola
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(464, 272);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(13, 13);
-            this.label22.TabIndex = 54;
-            this.label22.Text = "0";
+            this.numericUpDownCola.Location = new System.Drawing.Point(532, 328);
+            this.numericUpDownCola.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCola.Name = "numericUpDownCola";
+            this.numericUpDownCola.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownCola.TabIndex = 67;
+            this.numericUpDownCola.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label23
+            // numericUpDownTomatoSoup
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(464, 301);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(13, 13);
-            this.label23.TabIndex = 55;
-            this.label23.Text = "0";
+            this.numericUpDownTomatoSoup.Location = new System.Drawing.Point(465, 84);
+            this.numericUpDownTomatoSoup.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTomatoSoup.Name = "numericUpDownTomatoSoup";
+            this.numericUpDownTomatoSoup.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownTomatoSoup.TabIndex = 68;
+            this.numericUpDownTomatoSoup.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label24
+            // numericUpDownChickenSoup
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(464, 330);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(13, 13);
-            this.label24.TabIndex = 56;
-            this.label24.Text = "0";
+            this.numericUpDownChickenSoup.Location = new System.Drawing.Point(465, 113);
+            this.numericUpDownChickenSoup.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownChickenSoup.Name = "numericUpDownChickenSoup";
+            this.numericUpDownChickenSoup.Size = new System.Drawing.Size(39, 20);
+            this.numericUpDownChickenSoup.TabIndex = 69;
+            this.numericUpDownChickenSoup.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -673,19 +784,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(800, 552);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.amount1);
+            this.ClientSize = new System.Drawing.Size(840, 552);
+            this.Controls.Add(this.numericUpDownChickenSoup);
+            this.Controls.Add(this.numericUpDownTomatoSoup);
+            this.Controls.Add(this.numericUpDownCola);
+            this.Controls.Add(this.numericUpDownTea);
+            this.Controls.Add(this.numericUpDownSauces);
+            this.Controls.Add(this.numericUpDownCake);
+            this.Controls.Add(this.numericUpDownFishChips);
+            this.Controls.Add(this.numericUpDownSchnitzelPotatoes);
+            this.Controls.Add(this.numericUpDownSchnitzelRice);
+            this.Controls.Add(this.numericUpDownCoffee);
+            this.Controls.Add(this.numericUpDownSalad);
+            this.Controls.Add(this.numericUpDownSchnitzelChip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.billBox);
             this.Controls.Add(this.emailTextBox);
@@ -730,12 +841,24 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.restaurantDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderdetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelChip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCoffee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelRice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSchnitzelPotatoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFishChips)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCake)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSauces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCola)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTomatoSoup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChickenSoup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,18 +913,18 @@
         private RestaurantDataSet restaurantDataSet;
         private System.Windows.Forms.BindingSource orderdetailsBindingSource;
         private RestaurantDataSetTableAdapters.order_detailsTableAdapter order_detailsTableAdapter;
-        private System.Windows.Forms.Label amount1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown numericUpDownSchnitzelChip;
+        private System.Windows.Forms.NumericUpDown numericUpDownSalad;
+        private System.Windows.Forms.NumericUpDown numericUpDownCoffee;
+        private System.Windows.Forms.NumericUpDown numericUpDownSchnitzelRice;
+        private System.Windows.Forms.NumericUpDown numericUpDownSchnitzelPotatoes;
+        private System.Windows.Forms.NumericUpDown numericUpDownFishChips;
+        private System.Windows.Forms.NumericUpDown numericUpDownCake;
+        private System.Windows.Forms.NumericUpDown numericUpDownSauces;
+        private System.Windows.Forms.NumericUpDown numericUpDownTea;
+        private System.Windows.Forms.NumericUpDown numericUpDownCola;
+        private System.Windows.Forms.NumericUpDown numericUpDownTomatoSoup;
+        private System.Windows.Forms.NumericUpDown numericUpDownChickenSoup;
         //private WindowsFormsApp4.MenuDataSet menuDataSet;
         //private WindowsFormsApp4.MenuDataSetTableAdapters.menuTableAdapter menuTableAdapter;
     }

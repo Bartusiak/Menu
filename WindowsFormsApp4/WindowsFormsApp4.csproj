@@ -90,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantDataSet.cs">
+      <DependentUpon>RestaurantDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RestaurantDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

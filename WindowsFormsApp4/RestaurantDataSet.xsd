@@ -236,7 +236,7 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
   <xs:element name="RestaurantDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RestaurantDataSet" msprop:Generator_UserDSName="RestaurantDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="clients" msprop:Generator_TableClassName="clientsDataTable" msprop:Generator_TableVarName="tableclients" msprop:Generator_TablePropName="clients" msprop:Generator_RowDeletingName="clientsRowDeleting" msprop:Generator_RowChangingName="clientsRowChanging" msprop:Generator_RowEvHandlerName="clientsRowChangeEventHandler" msprop:Generator_RowDeletedName="clientsRowDeleted" msprop:Generator_UserTableName="clients" msprop:Generator_RowChangedName="clientsRowChanged" msprop:Generator_RowEvArgName="clientsRowChangeEvent" msprop:Generator_RowClassName="clientsRow">
+        <xs:element name="clients" msprop:Generator_TableClassName="clientsDataTable" msprop:Generator_TableVarName="tableclients" msprop:Generator_RowChangedName="clientsRowChanged" msprop:Generator_TablePropName="clients" msprop:Generator_RowDeletingName="clientsRowDeleting" msprop:Generator_RowChangingName="clientsRowChanging" msprop:Generator_RowEvHandlerName="clientsRowChangeEventHandler" msprop:Generator_RowDeletedName="clientsRowDeleted" msprop:Generator_RowClassName="clientsRow" msprop:Generator_UserTableName="clients" msprop:Generator_RowEvArgName="clientsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdClient" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdClient" msprop:Generator_ColumnPropNameInRow="IdClient" msprop:Generator_ColumnPropNameInTable="IdClientColumn" msprop:Generator_UserColumnName="IdClient" type="xs:int" />
@@ -250,25 +250,10 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="foods" msprop:Generator_TableClassName="foodsDataTable" msprop:Generator_TableVarName="tablefoods" msprop:Generator_TablePropName="foods" msprop:Generator_RowDeletingName="foodsRowDeleting" msprop:Generator_RowChangingName="foodsRowChanging" msprop:Generator_RowEvHandlerName="foodsRowChangeEventHandler" msprop:Generator_RowDeletedName="foodsRowDeleted" msprop:Generator_UserTableName="foods" msprop:Generator_RowChangedName="foodsRowChanged" msprop:Generator_RowEvArgName="foodsRowChangeEvent" msprop:Generator_RowClassName="foodsRow">
+        <xs:element name="order_details" msprop:Generator_TableClassName="order_detailsDataTable" msprop:Generator_TableVarName="tableorder_details" msprop:Generator_RowChangedName="order_detailsRowChanged" msprop:Generator_TablePropName="order_details" msprop:Generator_RowDeletingName="order_detailsRowDeleting" msprop:Generator_RowChangingName="order_detailsRowChanging" msprop:Generator_RowEvHandlerName="order_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="order_detailsRowDeleted" msprop:Generator_RowClassName="order_detailsRow" msprop:Generator_UserTableName="order_details" msprop:Generator_RowEvArgName="order_detailsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="IdFood" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdFood" msprop:Generator_ColumnPropNameInRow="IdFood" msprop:Generator_ColumnPropNameInTable="IdFoodColumn" msprop:Generator_UserColumnName="IdFood" type="xs:int" />
-              <xs:element name="NameFood" msprop:Generator_ColumnVarNameInTable="columnNameFood" msprop:Generator_ColumnPropNameInRow="NameFood" msprop:Generator_ColumnPropNameInTable="NameFoodColumn" msprop:Generator_UserColumnName="NameFood">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PriceFood" msprop:Generator_ColumnVarNameInTable="columnPriceFood" msprop:Generator_ColumnPropNameInRow="PriceFood" msprop:Generator_ColumnPropNameInTable="PriceFoodColumn" msprop:Generator_UserColumnName="PriceFood" type="xs:int" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="order_details" msprop:Generator_TableClassName="order_detailsDataTable" msprop:Generator_TableVarName="tableorder_details" msprop:Generator_TablePropName="order_details" msprop:Generator_RowDeletingName="order_detailsRowDeleting" msprop:Generator_RowChangingName="order_detailsRowChanging" msprop:Generator_RowEvHandlerName="order_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="order_detailsRowDeleted" msprop:Generator_UserTableName="order_details" msprop:Generator_RowChangedName="order_detailsRowChanged" msprop:Generator_RowEvArgName="order_detailsRowChangeEvent" msprop:Generator_RowClassName="order_detailsRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="IdOrder" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdOrder" msprop:Generator_ColumnPropNameInRow="IdOrder" msprop:Generator_ColumnPropNameInTable="IdOrderColumn" msprop:Generator_UserColumnName="IdOrder" type="xs:int" />
+              <xs:element name="IdOrder" msdata:ReadOnly="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdOrder" msprop:Generator_ColumnPropNameInRow="IdOrder" msprop:Generator_ColumnPropNameInTable="IdOrderColumn" msprop:Generator_UserColumnName="IdOrder" type="xs:int" />
               <xs:element name="IdFood" msprop:Generator_ColumnVarNameInTable="columnIdFood" msprop:Generator_ColumnPropNameInRow="IdFood" msprop:Generator_ColumnPropNameInTable="IdFoodColumn" msprop:Generator_UserColumnName="IdFood" type="xs:int" />
               <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:int" />
               <xs:element name="PriceFood" msprop:Generator_ColumnVarNameInTable="columnPriceFood" msprop:Generator_ColumnPropNameInRow="PriceFood" msprop:Generator_ColumnPropNameInTable="PriceFoodColumn" msprop:Generator_UserColumnName="PriceFood" type="xs:long" />
@@ -280,10 +265,30 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="foods" msprop:Generator_TableClassName="foodsDataTable" msprop:Generator_TableVarName="tablefoods" msprop:Generator_RowChangedName="foodsRowChanged" msprop:Generator_TablePropName="foods" msprop:Generator_RowDeletingName="foodsRowDeleting" msprop:Generator_RowChangingName="foodsRowChanging" msprop:Generator_RowEvHandlerName="foodsRowChangeEventHandler" msprop:Generator_RowDeletedName="foodsRowDeleted" msprop:Generator_RowClassName="foodsRow" msprop:Generator_UserTableName="foods" msprop:Generator_RowEvArgName="foodsRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="FK__order_det__IdFoo__3D5E1FD2" msdata:parent="order_details" msdata:child="foods" msdata:parentkey="IdFood" msdata:childkey="IdFood" msprop:Generator_UserChildTable="foods" msprop:Generator_ChildPropName="GetfoodsRows" msprop:Generator_UserRelationName="FK__order_det__IdFoo__3D5E1FD2" msprop:Generator_RelationVarName="relationFK__order_det__IdFoo__3D5E1FD2" msprop:Generator_UserParentTable="order_details" msprop:Generator_ParentPropName="order_detailsRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IdFood" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdFood" msprop:Generator_ColumnPropNameInRow="IdFood" msprop:Generator_ColumnPropNameInTable="IdFoodColumn" msprop:Generator_UserColumnName="IdFood" type="xs:int" />
+                    <xs:element name="NameFood" msprop:Generator_ColumnVarNameInTable="columnNameFood" msprop:Generator_ColumnPropNameInRow="NameFood" msprop:Generator_ColumnPropNameInTable="NameFoodColumn" msprop:Generator_UserColumnName="NameFood">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="50" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="PriceFood" msprop:Generator_ColumnVarNameInTable="columnPriceFood" msprop:Generator_ColumnPropNameInRow="PriceFood" msprop:Generator_ColumnPropNameInTable="PriceFoodColumn" msprop:Generator_UserColumnName="PriceFood" type="xs:int" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="order_history" msprop:Generator_TableClassName="order_historyDataTable" msprop:Generator_TableVarName="tableorder_history" msprop:Generator_TablePropName="order_history" msprop:Generator_RowDeletingName="order_historyRowDeleting" msprop:Generator_RowChangingName="order_historyRowChanging" msprop:Generator_RowEvHandlerName="order_historyRowChangeEventHandler" msprop:Generator_RowDeletedName="order_historyRowDeleted" msprop:Generator_UserTableName="order_history" msprop:Generator_RowChangedName="order_historyRowChanged" msprop:Generator_RowEvArgName="order_historyRowChangeEvent" msprop:Generator_RowClassName="order_historyRow">
+        <xs:element name="order_history" msprop:Generator_TableClassName="order_historyDataTable" msprop:Generator_TableVarName="tableorder_history" msprop:Generator_RowChangedName="order_historyRowChanged" msprop:Generator_TablePropName="order_history" msprop:Generator_RowDeletingName="order_historyRowDeleting" msprop:Generator_RowChangingName="order_historyRowChanging" msprop:Generator_RowEvHandlerName="order_historyRowChangeEventHandler" msprop:Generator_RowDeletedName="order_historyRowDeleted" msprop:Generator_RowClassName="order_historyRow" msprop:Generator_UserTableName="order_history" msprop:Generator_RowEvArgName="order_historyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdOrderHistory" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdOrderHistory" msprop:Generator_ColumnPropNameInRow="IdOrderHistory" msprop:Generator_ColumnPropNameInTable="IdOrderHistoryColumn" msprop:Generator_UserColumnName="IdOrderHistory" type="xs:int" />
@@ -314,9 +319,8 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__order_det__IdCli__412EB0B6" msdata:parent="clients" msdata:child="order_details" msdata:parentkey="IdClient" msdata:childkey="IdClient" msprop:Generator_UserChildTable="order_details" msprop:Generator_ChildPropName="Getorder_detailsRows" msprop:Generator_UserRelationName="FK__order_det__IdCli__412EB0B6" msprop:Generator_ParentPropName="clientsRow" msprop:Generator_RelationVarName="relationFK__order_det__IdCli__412EB0B6" msprop:Generator_UserParentTable="clients" />
-      <msdata:Relationship name="FK__order_det__IdFoo__3D5E1FD2" msdata:parent="foods" msdata:child="order_details" msdata:parentkey="IdFood" msdata:childkey="IdFood" msprop:Generator_UserChildTable="order_details" msprop:Generator_ChildPropName="Getorder_detailsRows" msprop:Generator_UserRelationName="FK__order_det__IdFoo__3D5E1FD2" msprop:Generator_ParentPropName="foodsRow" msprop:Generator_RelationVarName="relationFK__order_det__IdFoo__3D5E1FD2" msprop:Generator_UserParentTable="foods" />
-      <msdata:Relationship name="FK__order_his__IdOrd__403A8C7D" msdata:parent="order_details" msdata:child="order_history" msdata:parentkey="IdOrder" msdata:childkey="IdOrder" msprop:Generator_UserChildTable="order_history" msprop:Generator_ChildPropName="Getorder_historyRows" msprop:Generator_UserRelationName="FK__order_his__IdOrd__403A8C7D" msprop:Generator_ParentPropName="order_detailsRow" msprop:Generator_RelationVarName="relationFK__order_his__IdOrd__403A8C7D" msprop:Generator_UserParentTable="order_details" />
+      <msdata:Relationship name="FK__order_det__IdCli__412EB0B6" msdata:parent="clients" msdata:child="order_details" msdata:parentkey="IdClient" msdata:childkey="IdClient" msprop:Generator_UserChildTable="order_details" msprop:Generator_ChildPropName="Getorder_detailsRows" msprop:Generator_UserRelationName="FK__order_det__IdCli__412EB0B6" msprop:Generator_RelationVarName="relationFK__order_det__IdCli__412EB0B6" msprop:Generator_UserParentTable="clients" msprop:Generator_ParentPropName="clientsRow" />
+      <msdata:Relationship name="FK__order_his__IdOrd__403A8C7D" msdata:parent="order_history" msdata:child="order_details" msdata:parentkey="IdOrder" msdata:childkey="IdOrder" msprop:Generator_UserChildTable="order_details" msprop:Generator_ChildPropName="Getorder_detailsRows" msprop:Generator_UserRelationName="FK__order_his__IdOrd__403A8C7D" msprop:Generator_RelationVarName="relationFK__order_his__IdOrd__403A8C7D" msprop:Generator_UserParentTable="order_history" msprop:Generator_ParentPropName="order_historyRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

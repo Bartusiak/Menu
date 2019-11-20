@@ -32,9 +32,9 @@ namespace WindowsFormsApp4 {
         
         private order_historyDataTable tableorder_history;
         
-        private global::System.Data.DataRelation relationFK__order_det__IdCli__412EB0B6;
-        
         private global::System.Data.DataRelation relationFK__order_det__IdFoo__3D5E1FD2;
+        
+        private global::System.Data.DataRelation relationFK__order_det__IdCli__412EB0B6;
         
         private global::System.Data.DataRelation relationFK__order_his__IdOrd__403A8C7D;
         
@@ -272,8 +272,8 @@ namespace WindowsFormsApp4 {
                     this.tableorder_history.InitVars();
                 }
             }
-            this.relationFK__order_det__IdCli__412EB0B6 = this.Relations["FK__order_det__IdCli__412EB0B6"];
             this.relationFK__order_det__IdFoo__3D5E1FD2 = this.Relations["FK__order_det__IdFoo__3D5E1FD2"];
+            this.relationFK__order_det__IdCli__412EB0B6 = this.Relations["FK__order_det__IdCli__412EB0B6"];
             this.relationFK__order_his__IdOrd__403A8C7D = this.Relations["FK__order_his__IdOrd__403A8C7D"];
         }
         
@@ -293,17 +293,18 @@ namespace WindowsFormsApp4 {
             base.Tables.Add(this.tableorder_details);
             this.tableorder_history = new order_historyDataTable();
             base.Tables.Add(this.tableorder_history);
+            this.relationFK__order_det__IdFoo__3D5E1FD2 = new global::System.Data.DataRelation("FK__order_det__IdFoo__3D5E1FD2", new global::System.Data.DataColumn[] {
+                        this.tableorder_details.IdFoodColumn}, new global::System.Data.DataColumn[] {
+                        this.tablefoods.IdFoodColumn}, false);
+            this.relationFK__order_det__IdFoo__3D5E1FD2.Nested = true;
+            this.Relations.Add(this.relationFK__order_det__IdFoo__3D5E1FD2);
             this.relationFK__order_det__IdCli__412EB0B6 = new global::System.Data.DataRelation("FK__order_det__IdCli__412EB0B6", new global::System.Data.DataColumn[] {
                         this.tableclients.IdClientColumn}, new global::System.Data.DataColumn[] {
                         this.tableorder_details.IdClientColumn}, false);
             this.Relations.Add(this.relationFK__order_det__IdCli__412EB0B6);
-            this.relationFK__order_det__IdFoo__3D5E1FD2 = new global::System.Data.DataRelation("FK__order_det__IdFoo__3D5E1FD2", new global::System.Data.DataColumn[] {
-                        this.tablefoods.IdFoodColumn}, new global::System.Data.DataColumn[] {
-                        this.tableorder_details.IdFoodColumn}, false);
-            this.Relations.Add(this.relationFK__order_det__IdFoo__3D5E1FD2);
             this.relationFK__order_his__IdOrd__403A8C7D = new global::System.Data.DataRelation("FK__order_his__IdOrd__403A8C7D", new global::System.Data.DataColumn[] {
-                        this.tableorder_details.IdOrderColumn}, new global::System.Data.DataColumn[] {
-                        this.tableorder_history.IdOrderColumn}, false);
+                        this.tableorder_history.IdOrderColumn}, new global::System.Data.DataColumn[] {
+                        this.tableorder_details.IdOrderColumn}, false);
             this.Relations.Add(this.relationFK__order_his__IdOrd__403A8C7D);
         }
         
@@ -1106,17 +1107,17 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_detailsRow Addorder_detailsRow(foodsRow parentfoodsRowByFK__order_det__IdFoo__3D5E1FD2, int Amount, long PriceFood, clientsRow parentclientsRowByFK__order_det__IdCli__412EB0B6, string Comments) {
+            public order_detailsRow Addorder_detailsRow(order_historyRow parentorder_historyRowByFK__order_his__IdOrd__403A8C7D, int IdFood, int Amount, long PriceFood, clientsRow parentclientsRowByFK__order_det__IdCli__412EB0B6, string Comments) {
                 order_detailsRow roworder_detailsRow = ((order_detailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        IdFood,
                         Amount,
                         PriceFood,
                         null,
                         Comments};
-                if ((parentfoodsRowByFK__order_det__IdFoo__3D5E1FD2 != null)) {
-                    columnValuesArray[1] = parentfoodsRowByFK__order_det__IdFoo__3D5E1FD2[0];
+                if ((parentorder_historyRowByFK__order_his__IdOrd__403A8C7D != null)) {
+                    columnValuesArray[0] = parentorder_historyRowByFK__order_his__IdOrd__403A8C7D[1];
                 }
                 if ((parentclientsRowByFK__order_det__IdCli__412EB0B6 != null)) {
                     columnValuesArray[4] = parentclientsRowByFK__order_det__IdCli__412EB0B6[0];
@@ -1175,7 +1176,6 @@ namespace WindowsFormsApp4 {
                 base.Columns.Add(this.columnComments);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdOrder}, true));
-                this.columnIdOrder.AutoIncrement = true;
                 this.columnIdOrder.AutoIncrementSeed = -1;
                 this.columnIdOrder.AutoIncrementStep = -1;
                 this.columnIdOrder.AllowDBNull = false;
@@ -1429,16 +1429,13 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow Addorder_historyRow(order_detailsRow parentorder_detailsRowByFK__order_his__IdOrd__403A8C7D, System.DateTime DateOrder, long PriceTotal) {
+            public order_historyRow Addorder_historyRow(int IdOrder, System.DateTime DateOrder, long PriceTotal) {
                 order_historyRow roworder_historyRow = ((order_historyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
+                        IdOrder,
                         DateOrder,
                         PriceTotal};
-                if ((parentorder_detailsRowByFK__order_his__IdOrd__403A8C7D != null)) {
-                    columnValuesArray[1] = parentorder_detailsRowByFK__order_his__IdOrd__403A8C7D[0];
-                }
                 roworder_historyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(roworder_historyRow);
                 return roworder_historyRow;
@@ -1719,12 +1716,12 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_detailsRow[] Getorder_detailsRows() {
-                if ((this.Table.ChildRelations["FK__order_det__IdFoo__3D5E1FD2"] == null)) {
-                    return new order_detailsRow[0];
+            public order_detailsRow order_detailsRow {
+                get {
+                    return ((order_detailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_det__IdFoo__3D5E1FD2"])));
                 }
-                else {
-                    return ((order_detailsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__order_det__IdFoo__3D5E1FD2"])));
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__order_det__IdFoo__3D5E1FD2"]);
                 }
             }
         }
@@ -1827,12 +1824,12 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public foodsRow foodsRow {
+            public order_historyRow order_historyRow {
                 get {
-                    return ((foodsRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_det__IdFoo__3D5E1FD2"])));
+                    return ((order_historyRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__order_det__IdFoo__3D5E1FD2"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"]);
                 }
             }
             
@@ -1850,12 +1847,12 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow[] Getorder_historyRows() {
-                if ((this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"] == null)) {
-                    return new order_historyRow[0];
+            public foodsRow[] GetfoodsRows() {
+                if ((this.Table.ChildRelations["FK__order_det__IdFoo__3D5E1FD2"] == null)) {
+                    return new foodsRow[0];
                 }
                 else {
-                    return ((order_historyRow[])(base.GetChildRows(this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"])));
+                    return ((foodsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__order_det__IdFoo__3D5E1FD2"])));
                 }
             }
         }
@@ -1920,12 +1917,12 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_detailsRow order_detailsRow {
-                get {
-                    return ((order_detailsRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"])));
+            public order_detailsRow[] Getorder_detailsRows() {
+                if ((this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"] == null)) {
+                    return new order_detailsRow[0];
                 }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"]);
+                else {
+                    return ((order_detailsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"])));
                 }
             }
         }
@@ -3544,12 +3541,12 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._order_historyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(updatedRows));
+                    result = (result + this._order_historyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3562,12 +3559,12 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(updatedRows));
+                    result = (result + this._foodsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3589,11 +3586,11 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._order_historyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(addedRows));
+                    result = (result + this._order_historyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3605,11 +3602,11 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(addedRows));
+                    result = (result + this._foodsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3623,11 +3620,11 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(RestaurantDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(deletedRows));
+                    result = (result + this._foodsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3639,11 +3636,11 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.foods.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._order_historyTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(deletedRows));
+                    result = (result + this._order_historyTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
