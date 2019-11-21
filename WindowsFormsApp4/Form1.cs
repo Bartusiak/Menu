@@ -19,7 +19,7 @@ namespace WindowsFormsApp4
     {
         ArrayList idOrderFood = new ArrayList();
         ArrayList amountFood = new ArrayList();
-        SqlConnection connection = new SqlConnection("Data Source=PUSSYROAD;Initial Catalog=SQLEXPRESS;User ID=sa;password=restauracja");
+        SqlConnection connection = new SqlConnection("Data Source=PUSSYROAD/SQLSERVER;Initial Catalog=MSSQL;User ID=sa;password=restauracja");
         int totality = 0;
         int amount = 0;
 
@@ -241,8 +241,25 @@ namespace WindowsFormsApp4
                 {
                     Debug.WriteLine("SmtpClient: Exception message: " + ex.Message);
                 }
-                
-                
+                Debug.WriteLine("Button14_Click: Check length two arraylist ");
+                var numberOfList = idOrderFood.Count;
+                if (numberOfList == amountFood.Count)
+                {
+                    Debug.WriteLine("Button14_Click: Open connection of database");
+                    connection.Open();
+                    Debug.WriteLine("Button14_Click: Starting foreach");
+                    String query = "INSERT INTO order_details(IdFood,Amount) VALUES (@IdFood, @Amount)";
+                    SqlCommand myCommand = new SqlCommand(query, connection);
+                    for (int i = 0; i <=numberOfList; i++)
+                    {
+                        Debug.WriteLine("Button14_Click FOR: Execute myCoomand idOrderFood" + idOrderFood[i]);
+                        myCommand.Parameters.AddWithValue("@IdFood", idOrderFood[i]);
+                        Debug.WriteLine("Button14_Click FOR: Execute myCoomand amountFood" + amountFood[i]);
+                        myCommand.Parameters.AddWithValue("@Amount", amountFood[i]);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+  
             }
             else
             {
