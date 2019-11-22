@@ -61,7 +61,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.totalityTextBox = new System.Windows.Forms.TextBox();
-            this.addComBtn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.submitBtn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -437,16 +436,6 @@
             this.totalityTextBox.TabIndex = 33;
             this.totalityTextBox.Text = "0";
             // 
-            // addComBtn
-            // 
-            this.addComBtn.Location = new System.Drawing.Point(467, 501);
-            this.addComBtn.Name = "addComBtn";
-            this.addComBtn.Size = new System.Drawing.Size(41, 23);
-            this.addComBtn.TabIndex = 35;
-            this.addComBtn.Text = "Add";
-            this.addComBtn.UseVisualStyleBackColor = true;
-            this.addComBtn.Click += new System.EventHandler(this.button15_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -806,7 +795,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.addComBtn);
             this.Controls.Add(this.totalityTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -898,7 +886,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox totalityTextBox;
-        private System.Windows.Forms.Button addComBtn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.Label label10;

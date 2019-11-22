@@ -19,7 +19,9 @@ namespace WindowsFormsApp4
     {
         ArrayList idOrderFood = new ArrayList();
         ArrayList amountFood = new ArrayList();
-        SqlConnection connection = new SqlConnection("Data Source=PUSSYROAD/SQLSERVER;Initial Catalog=MSSQL;User ID=sa;password=restauracja");
+        String query;
+        SqlCommand myCommand = new SqlCommand();
+        SqlConnection connection = new SqlConnection(@"Data Source=PUSSYROAD\SQLSERVER;Initial Catalog=Restaurant;User ID=sa;password=restauracja");
         int totality = 0;
         int amount = 0;
 
@@ -91,7 +93,7 @@ namespace WindowsFormsApp4
                         //   Debug.Write("Venecia");
                         tempPizzaString = "Venecia ";
                         Debug.WriteLine("Switch Add to totality pizza price - 25");
-                        totality= totality + 25;
+                        totality = totality + 25;
                         idOrderFood.Add(4);
                         amountFood.Add(1);
                         billBox.Items.Add(tempPizzaString + "           25zł");
@@ -148,12 +150,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("Button3_Clicked: Chicken soup ordered: ");
             amount = Convert.ToInt32(numericUpDownChickenSoup.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*10);
+            totality = totality + (amount * 10);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(10);
             amountFood.Add(amount);
-            billBox.Items.Add("Chicken Soup             " + amount + "x" +10 );
+            billBox.Items.Add("Chicken Soup             " + amount + "x" + 10);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -166,12 +168,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("Button7_Clicked: Fish with chips ordered: ");
             amount = Convert.ToInt32(numericUpDownFishChips.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*28);
+            totality = totality + (amount * 28);
             Debug.WriteLine("Button7_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(14);
             amountFood.Add(amount);
-            billBox.Items.Add("Fish with chips          " + amount + "x" +28);
+            billBox.Items.Add("Fish with chips          " + amount + "x" + 28);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -179,7 +181,7 @@ namespace WindowsFormsApp4
             Debug.WriteLine("Button8_Clicked: Hungarian cake ordered: ");
             amount = Convert.ToInt32(numericUpDownCake.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*27);
+            totality = totality + (amount * 27);
             Debug.WriteLine("Button8_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(15);
@@ -228,38 +230,98 @@ namespace WindowsFormsApp4
                 Debug.WriteLine("Button14_Click: Match success. ");
                 Debug.WriteLine("Button14_Click: Trying to send mail with the bill ");
                 // We need free smtp server to send mail without using password
-                MailMessage message = new MailMessage("mailofrestaurant@domain.com", emailTextBox.Text, "Your order from restaurant", "Here we want to put the bill later");
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com ",587);
-                smtpClient.Credentials = new System.Net.NetworkCredential("mailofrestaurant@domain.com", "passwordemail");
+                string billToSend = "";
+                foreach(var item in billBox.Items)
+                {
+                    billToSend += item.ToString() + "\n";
+                }
+                MailMessage message = new MailMessage("writeemailofrestaurant@gmail.com", emailTextBox.Text, "Your order from restaurant", "Ordered: " + "\n" + billToSend + "\n" + "Do zapłaty: " + totalityTextBox.Text + "\n" + "Komentarz: " + "\n" + commentTextBox.Text);
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com ", 587);
+                smtpClient.Credentials = new System.Net.NetworkCredential("writeemailofrestaurant@gmail.com", "writeyourpassword");
                 smtpClient.EnableSsl = true;
                 Debug.WriteLine("SmtpClient: Mail is sending to: " + emailTextBox.Text);
                 try
                 {
                     smtpClient.Send(message);
+                
+                    MessageBox.Show("Message sent successfully", "Success!", MessageBoxButtons.OK);
                     Debug.WriteLine("SmtpClient: Mail sent");
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Debug.WriteLine("SmtpClient: Exception message: " + ex.Message);
+                }
+                connection.Open();
+                query = "BEGIN IF NOT EXISTS (SELECT Email FROM dbo.clients WHERE Email = '" + emailTextBox.Text + "')" + " BEGIN INSERT INTO clients (Email) VALUES ('" + emailTextBox.Text + "') END END ";
+                myCommand = new SqlCommand(query, connection);
+                myCommand.ExecuteNonQuery();
+                query = "SELECT MAX(IdOrder) FROM order_details ;";
+                myCommand = new SqlCommand(query, connection);
+                int idOrder = (int)myCommand.ExecuteScalar() + 1;
+                if (idOrder == -1)
+                {
+                    idOrder = 1;
                 }
                 Debug.WriteLine("Button14_Click: Check length two arraylist ");
                 var numberOfList = idOrderFood.Count;
                 if (numberOfList == amountFood.Count)
                 {
                     Debug.WriteLine("Button14_Click: Open connection of database");
-                    connection.Open();
+
                     Debug.WriteLine("Button14_Click: Starting foreach");
-                    String query = "INSERT INTO order_details(IdFood,Amount) VALUES (@IdFood, @Amount)";
-                    SqlCommand myCommand = new SqlCommand(query, connection);
-                    for (int i = 0; i <=numberOfList; i++)
+                    for (int i = 0; i <numberOfList; i++)
                     {
-                        Debug.WriteLine("Button14_Click FOR: Execute myCoomand idOrderFood" + idOrderFood[i]);
+                        int foodprice = 0;
+                        SqlCommand myCommand = new SqlCommand();
+                        query = "SELECT PriceFood FROM dbo.foods WHERE IdFood=" + idOrderFood[i];
+                        Debug.WriteLine("Button14_Click FOR: idOrderFood[i] before execute myCommand2 " + idOrderFood[i]);
+                        SqlCommand myCommand2 = new SqlCommand(query, connection);
+                        foodprice = (int)myCommand2.ExecuteScalar();
+                        Debug.WriteLine("Button14_Click FOR EmailTextBox: " + emailTextBox.Text);
+                        query = "SELECT IdClient FROM clients WHERE Email='" + emailTextBox.Text + "'";
+                        SqlCommand myCommand3 = new SqlCommand(query, connection);
+                        int idClient = (int)myCommand3.ExecuteScalar();
+                        Debug.WriteLine("Button14_Click FOR: Id client: " + idClient);
+                        query = "INSERT INTO dbo.order_details(IdFood,IdClient,Amount,PriceFood,Comments,IdOrder) VALUES (@IdFood,@IdClient,@Amount,@PriceFood,@Comments,@IdOrder)";
+                        myCommand = new SqlCommand(query, connection);
+                        Debug.WriteLine("Button14_Click FOR: Execute myCommand idOrderFood" + idOrderFood[i]);
                         myCommand.Parameters.AddWithValue("@IdFood", idOrderFood[i]);
-                        Debug.WriteLine("Button14_Click FOR: Execute myCoomand amountFood" + amountFood[i]);
+                        Debug.WriteLine("Button14_Click FOR: Execute myCommand idClient" + idClient);
+                        myCommand.Parameters.AddWithValue("@IdClient", idClient);
+                        Debug.WriteLine("Button14_Click FOR: Execute myCommand amountFood" + amountFood[i]);
                         myCommand.Parameters.AddWithValue("@Amount", amountFood[i]);
+                        Debug.WriteLine("Button14_Click FOR: PriceFood: " + foodprice * Convert.ToInt32(amountFood[i]));
+                        myCommand.Parameters.AddWithValue("@PriceFood", foodprice * Convert.ToInt32(amountFood[i]));
+                        myCommand.Parameters.AddWithValue("@Comments", commentTextBox.Text);
+                        Debug.WriteLine("Button14_Click FOR: Execute myCommand " + idOrder);
+                        myCommand.Parameters.AddWithValue("@IdOrder", idOrder);
                         myCommand.ExecuteNonQuery();
                     }
+                    amountFood.Clear();
+                    idOrderFood.Clear();
+                    numericUpDownCake.ResetText();
+                    numericUpDownChickenSoup.ResetText();
+                    numericUpDownCoffee.ResetText();
+                    numericUpDownCola.ResetText();
+                    numericUpDownFishChips.ResetText();
+                    numericUpDownSalad.ResetText();
+                    numericUpDownSauces.ResetText();
+                    numericUpDownSchnitzelChip.ResetText();
+                    numericUpDownSchnitzelPotatoes.ResetText();
+                    numericUpDownSchnitzelRice.ResetText();
+                    numericUpDownTea.ResetText();
+                    numericUpDownTomatoSoup.ResetText();
+                    foreach (CheckBox checkBox in groupBox1.Controls)
+                    {
+                        checkBox.Checked = false;
+                    }
+                    totalityTextBox.Text = "0";
+                    billBox.Items.Clear();
+                    emailTextBox.Text = "Email:";
+                    commentTextBox.Text = "";
                 }
-  
+                connection.Close();
+
             }
             else
             {
@@ -288,12 +350,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("SchnitzelChipsBtn_Clicked: Schnitzel with Chips ordered: ");
             amount = Convert.ToInt32(numericUpDownSchnitzelChip.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*30);
-            Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality );
+            totality = totality + (amount * 30);
+            Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(11);
             amountFood.Add(amount);
-            billBox.Items.Add("Schnitzel with Chips             " + amount + "x" + 10);
+            billBox.Items.Add("Schnitzel with Chips             " + amount + "x" + 30);
         }
 
         private void schnitzelRiceBtn_Click(object sender, EventArgs e)
@@ -301,12 +363,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("SchnitzelRice_Clicked: Schnitzel with Rice ordered: ");
             amount = Convert.ToInt32(numericUpDownSchnitzelRice.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*30);
+            totality = totality + (amount * 30);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(12);
             amountFood.Add(amount);
-            billBox.Items.Add("Schnitzel with Rice              " + amount + "x" + 10);
+            billBox.Items.Add("Schnitzel with Rice              " + amount + "x" + 30);
         }
 
         private void schnitzelPotatoBtn_Click(object sender, EventArgs e)
@@ -314,12 +376,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("SchnitzelPotato_Clicked: Schnitzel with Potatoes ordered: ");
             amount = Convert.ToInt32(numericUpDownSchnitzelPotatoes.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*30);
+            totality = totality + (amount * 30);
             Debug.WriteLine("SchnitzelPotato_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(13);
             amountFood.Add(amount);
-            billBox.Items.Add("Chicken Soup             " + amount + "x" + 10);
+            billBox.Items.Add("Chicken Soup             " + amount + "x" + 30);
         }
 
         private void saladBtn_Click(object sender, EventArgs e)
@@ -327,12 +389,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("SaladBtn_Clicked: Salad bar ordered: ");
             amount = Convert.ToInt32(numericUpDownSalad.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*5);
+            totality = totality + (amount * 5);
             Debug.WriteLine("SaladBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
-            idOrderFood.Add(17);
+            idOrderFood.Add(16);
             amountFood.Add(amount);
-            billBox.Items.Add("Salad bar            " + amount + "x" + 10);
+            billBox.Items.Add("Salad bar            " + amount + "x" + 5);
         }
 
         private void saucesBtn_Click(object sender, EventArgs e)
@@ -340,12 +402,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("SaucesBtn_Clicked: A set of sauces ordered: ");
             amount = Convert.ToInt32(numericUpDownSauces.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*6);
+            totality = totality + (amount * 6);
             Debug.WriteLine("SaucesBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
-            idOrderFood.Add(18);
+            idOrderFood.Add(17);
             amountFood.Add(amount);
-            billBox.Items.Add("A set of sauces          " + amount + "x" + 10);
+            billBox.Items.Add("A set of sauces          " + amount + "x" + 6);
         }
 
         private void tomatoBtn_Click(object sender, EventArgs e)
@@ -353,12 +415,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("TomatoBtn_Clicked: Tomato soup ordered: ");
             amount = Convert.ToInt32(numericUpDownTomatoSoup.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*12);
+            totality = totality + (amount * 12);
             Debug.WriteLine("TomatoBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
             idOrderFood.Add(9);
             amountFood.Add(amount);
-            billBox.Items.Add("Tomato Soup          " + amount + "x" + 10);
+            billBox.Items.Add("Tomato Soup          " + amount + "x" + 12);
         }
 
         private void coffeeBtn_Click(object sender, EventArgs e)
@@ -366,12 +428,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("CoffeeBtn_Clicked: Coffee ordered: ");
             amount = Convert.ToInt32(numericUpDownCoffee.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*5);
+            totality = totality + (amount * 5);
             Debug.WriteLine("CoffeeBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
-            idOrderFood.Add(19);
+            idOrderFood.Add(18);
             amountFood.Add(amount);
-            billBox.Items.Add("Coffee           " + amount + "x" + 10);
+            billBox.Items.Add("Coffee           " + amount + "x" + 5);
         }
 
         private void teaBtn_Click(object sender, EventArgs e)
@@ -379,12 +441,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("TeaBtn_Clicked: Tea ordered: ");
             amount = Convert.ToInt32(numericUpDownTea.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*5);
+            totality = totality + (amount * 5);
             Debug.WriteLine("TeaBtn_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
-            idOrderFood.Add(20);
+            idOrderFood.Add(19);
             amountFood.Add(amount);
-            billBox.Items.Add("Tea          " + amount+ "x" + 10);
+            billBox.Items.Add("Tea          " + amount + "x" + 5);
         }
 
         private void colaBtn_Click(object sender, EventArgs e)
@@ -392,12 +454,12 @@ namespace WindowsFormsApp4
             Debug.WriteLine("ColaBtn_Clicked: Cola ordered: ");
             amount = Convert.ToInt32(numericUpDownCola.Value);
             totality = Int32.Parse(totalityTextBox.Text);
-            totality = totality + (amount*5);
+            totality = totality + (amount * 5);
             Debug.WriteLine("Button3_Clicked: Adding totality value to the totalityTextBox - " + totality);
             totalityTextBox.Text = totality.ToString();
-            idOrderFood.Add(21);
+            idOrderFood.Add(20);
             amountFood.Add(amount);
-            billBox.Items.Add("Cola             " + amount +"x"+ 10);
+            billBox.Items.Add("Cola             " + amount + "x" + 5);
         }
 
         private void menuBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -408,7 +470,7 @@ namespace WindowsFormsApp4
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'restaurantDataSet.order_details' . Możesz go przenieść lub usunąć.
-            this.order_detailsTableAdapter.Fill(this.restaurantDataSet.order_details);
+            //this.order_detailsTableAdapter.Fill(this.restaurantDataSet.order_details);
 
         }
 
