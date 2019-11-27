@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="foods">
+    <Key>
+      <PropertyRef Name="IdFood" />
+    </Key>
+    <Property Name="IdFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameFood" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PriceFood" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+    </Key>
+    <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdFood" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="PriceFood" Type="bigint" Nullable="false" />
+    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="text" />
+  </EntityType>
+  <EntityType Name="order_history">
+    <Key>
+      <PropertyRef Name="IdOrderHistory" />
+    </Key>
+    <Property Name="IdOrderHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="DateOrder" Type="date" Nullable="false" />
+    <Property Name="PriceTotal" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__order_det__IdCli__412EB0B6">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__IdFoo__3D5E1FD2">
+    <End Role="foods" Type="Self.foods" Multiplicity="1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="foods">
+        <PropertyRef Name="IdFood" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="IdFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_his__IdOrd__403A8C7D">
+    <End Role="order_details" Type="Self.order_details" Multiplicity="1" />
+    <End Role="order_history" Type="Self.order_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_details">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="order_history">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantModelStoreContainer">
+    <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="foods" EntityType="Self.foods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_history" EntityType="Self.order_history" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__order_det__IdCli__412EB0B6" Association="Self.FK__order_det__IdCli__412EB0B6">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__IdFoo__3D5E1FD2" Association="Self.FK__order_det__IdFoo__3D5E1FD2">
+      <End Role="foods" EntitySet="foods" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_his__IdOrd__403A8C7D" Association="Self.FK__order_his__IdOrd__403A8C7D">
+      <End Role="order_details" EntitySet="order_details" />
+      <End Role="order_history" EntitySet="order_history" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

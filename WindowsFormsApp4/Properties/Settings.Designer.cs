@@ -32,5 +32,16 @@ namespace WindowsFormsApp4.Properties {
                 return ((string)(this["MenuConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PUSSYROAD\\SQLSERVER;Initial Catalog=Restaurant;User ID=sa;Password=re" +
+            "stauracja")]
+        public string RestaurantConnectionString {
+            get {
+                return ((string)(this["RestaurantConnectionString"]));
+            }
+        }
     }
 }
