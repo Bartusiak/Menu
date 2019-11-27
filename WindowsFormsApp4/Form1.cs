@@ -235,9 +235,9 @@ namespace WindowsFormsApp4
                 {
                     billToSend += item.ToString() + "\n";
                 }
-                MailMessage message = new MailMessage("writeemailofrestaurant@gmail.com", emailTextBox.Text, "Your order from restaurant", "Ordered: " + "\n" + billToSend + "\n" + "Do zapłaty: " + totalityTextBox.Text + "\n" + "Komentarz: " + "\n" + commentTextBox.Text);
+                MailMessage message = new MailMessage("yourrestaurantemail@gmail.com", emailTextBox.Text, "Your order from restaurant", "Ordered: " + "\n" + billToSend + "\n" + "Do zapłaty: " + totalityTextBox.Text + "\n" + "Komentarz: " + "\n" + commentTextBox.Text);
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com ", 587);
-                smtpClient.Credentials = new System.Net.NetworkCredential("writeemailofrestaurant@gmail.com", "writeyourpassword");
+                smtpClient.Credentials = new System.Net.NetworkCredential("yourrestaurantemail@gmail.com", "writeyourpassword");
                 smtpClient.EnableSsl = true;
                 Debug.WriteLine("SmtpClient: Mail is sending to: " + emailTextBox.Text);
                 try

@@ -30,11 +30,7 @@ namespace WindowsFormsApp4 {
         
         private order_detailsDataTable tableorder_details;
         
-        private order_historyDataTable tableorder_history;
-        
         private global::System.Data.DataRelation relationFK__order_det__IdFoo__3D5E1FD2;
-        
-        private global::System.Data.DataRelation relationFK__order_his__IdOrd__403A8C7D;
         
         private global::System.Data.DataRelation relationFK__order_det__IdCli__412EB0B6;
         
@@ -74,9 +70,6 @@ namespace WindowsFormsApp4 {
                 }
                 if ((ds.Tables["order_details"] != null)) {
                     base.Tables.Add(new order_detailsDataTable(ds.Tables["order_details"]));
-                }
-                if ((ds.Tables["order_history"] != null)) {
-                    base.Tables.Add(new order_historyDataTable(ds.Tables["order_history"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -123,16 +116,6 @@ namespace WindowsFormsApp4 {
         public order_detailsDataTable order_details {
             get {
                 return this.tableorder_details;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public order_historyDataTable order_history {
-            get {
-                return this.tableorder_history;
             }
         }
         
@@ -212,9 +195,6 @@ namespace WindowsFormsApp4 {
                 if ((ds.Tables["order_details"] != null)) {
                     base.Tables.Add(new order_detailsDataTable(ds.Tables["order_details"]));
                 }
-                if ((ds.Tables["order_history"] != null)) {
-                    base.Tables.Add(new order_historyDataTable(ds.Tables["order_history"]));
-                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -266,14 +246,7 @@ namespace WindowsFormsApp4 {
                     this.tableorder_details.InitVars();
                 }
             }
-            this.tableorder_history = ((order_historyDataTable)(base.Tables["order_history"]));
-            if ((initTable == true)) {
-                if ((this.tableorder_history != null)) {
-                    this.tableorder_history.InitVars();
-                }
-            }
             this.relationFK__order_det__IdFoo__3D5E1FD2 = this.Relations["FK__order_det__IdFoo__3D5E1FD2"];
-            this.relationFK__order_his__IdOrd__403A8C7D = this.Relations["FK__order_his__IdOrd__403A8C7D"];
             this.relationFK__order_det__IdCli__412EB0B6 = this.Relations["FK__order_det__IdCli__412EB0B6"];
         }
         
@@ -291,19 +264,11 @@ namespace WindowsFormsApp4 {
             base.Tables.Add(this.tablefoods);
             this.tableorder_details = new order_detailsDataTable();
             base.Tables.Add(this.tableorder_details);
-            this.tableorder_history = new order_historyDataTable();
-            base.Tables.Add(this.tableorder_history);
             this.relationFK__order_det__IdFoo__3D5E1FD2 = new global::System.Data.DataRelation("FK__order_det__IdFoo__3D5E1FD2", new global::System.Data.DataColumn[] {
                         this.tablefoods.IdFoodColumn}, new global::System.Data.DataColumn[] {
                         this.tableorder_details.IdFoodColumn}, false);
             this.relationFK__order_det__IdFoo__3D5E1FD2.Nested = true;
             this.Relations.Add(this.relationFK__order_det__IdFoo__3D5E1FD2);
-            this.relationFK__order_his__IdOrd__403A8C7D = new global::System.Data.DataRelation("FK__order_his__IdOrd__403A8C7D", new global::System.Data.DataColumn[] {
-                        this.tableorder_history.IdOrderHistoryColumn,
-                        this.tableorder_history.IdClientColumn}, new global::System.Data.DataColumn[] {
-                        this.tableorder_details.IdOrderColumn,
-                        this.tableorder_details.IdClientColumn}, false);
-            this.Relations.Add(this.relationFK__order_his__IdOrd__403A8C7D);
             this.relationFK__order_det__IdCli__412EB0B6 = new global::System.Data.DataRelation("FK__order_det__IdCli__412EB0B6", new global::System.Data.DataColumn[] {
                         this.tableclients.IdClientColumn}, new global::System.Data.DataColumn[] {
                         this.tableorder_details.IdClientColumn}, false);
@@ -325,12 +290,6 @@ namespace WindowsFormsApp4 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeorder_details() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeorder_history() {
             return false;
         }
         
@@ -397,9 +356,6 @@ namespace WindowsFormsApp4 {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void order_detailsRowChangeEventHandler(object sender, order_detailsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void order_historyRowChangeEventHandler(object sender, order_historyRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1305,313 +1261,6 @@ namespace WindowsFormsApp4 {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class order_historyDataTable : global::System.Data.TypedTableBase<order_historyRow> {
-            
-            private global::System.Data.DataColumn columnIdOrderHistory;
-            
-            private global::System.Data.DataColumn columnIdClient;
-            
-            private global::System.Data.DataColumn columnDateOrder;
-            
-            private global::System.Data.DataColumn columnPriceTotal;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyDataTable() {
-                this.TableName = "order_history";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal order_historyDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected order_historyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IdOrderHistoryColumn {
-                get {
-                    return this.columnIdOrderHistory;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn IdClientColumn {
-                get {
-                    return this.columnIdClient;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DateOrderColumn {
-                get {
-                    return this.columnDateOrder;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn PriceTotalColumn {
-                get {
-                    return this.columnPriceTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow this[int index] {
-                get {
-                    return ((order_historyRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event order_historyRowChangeEventHandler order_historyRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event order_historyRowChangeEventHandler order_historyRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event order_historyRowChangeEventHandler order_historyRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event order_historyRowChangeEventHandler order_historyRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Addorder_historyRow(order_historyRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow Addorder_historyRow(int IdClient, System.DateTime DateOrder, long PriceTotal) {
-                order_historyRow roworder_historyRow = ((order_historyRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        IdClient,
-                        DateOrder,
-                        PriceTotal};
-                roworder_historyRow.ItemArray = columnValuesArray;
-                this.Rows.Add(roworder_historyRow);
-                return roworder_historyRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow FindByIdOrderHistory(int IdOrderHistory) {
-                return ((order_historyRow)(this.Rows.Find(new object[] {
-                            IdOrderHistory})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                order_historyDataTable cln = ((order_historyDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new order_historyDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnIdOrderHistory = base.Columns["IdOrderHistory"];
-                this.columnIdClient = base.Columns["IdClient"];
-                this.columnDateOrder = base.Columns["DateOrder"];
-                this.columnPriceTotal = base.Columns["PriceTotal"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnIdOrderHistory = new global::System.Data.DataColumn("IdOrderHistory", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdOrderHistory);
-                this.columnIdClient = new global::System.Data.DataColumn("IdClient", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdClient);
-                this.columnDateOrder = new global::System.Data.DataColumn("DateOrder", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDateOrder);
-                this.columnPriceTotal = new global::System.Data.DataColumn("PriceTotal", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPriceTotal);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIdOrderHistory}, true));
-                this.columnIdOrderHistory.AutoIncrement = true;
-                this.columnIdOrderHistory.AutoIncrementSeed = -1;
-                this.columnIdOrderHistory.AutoIncrementStep = -1;
-                this.columnIdOrderHistory.AllowDBNull = false;
-                this.columnIdOrderHistory.ReadOnly = true;
-                this.columnIdOrderHistory.Unique = true;
-                this.columnIdClient.AllowDBNull = false;
-                this.columnDateOrder.AllowDBNull = false;
-                this.columnPriceTotal.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow Neworder_historyRow() {
-                return ((order_historyRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new order_historyRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(order_historyRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.order_historyRowChanged != null)) {
-                    this.order_historyRowChanged(this, new order_historyRowChangeEvent(((order_historyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.order_historyRowChanging != null)) {
-                    this.order_historyRowChanging(this, new order_historyRowChangeEvent(((order_historyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.order_historyRowDeleted != null)) {
-                    this.order_historyRowDeleted(this, new order_historyRowChangeEvent(((order_historyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.order_historyRowDeleting != null)) {
-                    this.order_historyRowDeleting(this, new order_historyRowChangeEvent(((order_historyRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Removeorder_historyRow(order_historyRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RestaurantDataSet ds = new RestaurantDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "order_historyDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class clientsRow : global::System.Data.DataRow {
@@ -1816,17 +1465,6 @@ namespace WindowsFormsApp4 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow order_historyRowParent {
-                get {
-                    return ((order_historyRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__order_his__IdOrd__403A8C7D"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public clientsRow clientsRow {
                 get {
                     return ((clientsRow)(this.GetParentRow(this.Table.ParentRelations["FK__order_det__IdCli__412EB0B6"])));
@@ -1846,76 +1484,6 @@ namespace WindowsFormsApp4 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCommentsNull() {
                 this[this.tableorder_details.CommentsColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class order_historyRow : global::System.Data.DataRow {
-            
-            private order_historyDataTable tableorder_history;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal order_historyRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableorder_history = ((order_historyDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int IdOrderHistory {
-                get {
-                    return ((int)(this[this.tableorder_history.IdOrderHistoryColumn]));
-                }
-                set {
-                    this[this.tableorder_history.IdOrderHistoryColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int IdClient {
-                get {
-                    return ((int)(this[this.tableorder_history.IdClientColumn]));
-                }
-                set {
-                    this[this.tableorder_history.IdClientColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime DateOrder {
-                get {
-                    return ((global::System.DateTime)(this[this.tableorder_history.DateOrderColumn]));
-                }
-                set {
-                    this[this.tableorder_history.DateOrderColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public long PriceTotal {
-                get {
-                    return ((long)(this[this.tableorder_history.PriceTotalColumn]));
-                }
-                set {
-                    this[this.tableorder_history.PriceTotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_detailsRow[] Getorder_detailsRows() {
-                if ((this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"] == null)) {
-                    return new order_detailsRow[0];
-                }
-                else {
-                    return ((order_detailsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__order_his__IdOrd__403A8C7D"])));
-                }
             }
         }
         
@@ -2007,40 +1575,6 @@ namespace WindowsFormsApp4 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public order_detailsRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class order_historyRowChangeEvent : global::System.EventArgs {
-            
-            private order_historyRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRowChangeEvent(order_historyRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public order_historyRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3038,323 +2572,6 @@ SELECT IdOrder, IdFood, Amount, PriceFood, IdClient, Comments FROM order_details
     }
     
     /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class order_historyTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public order_historyTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "order_history";
-            tableMapping.ColumnMappings.Add("IdOrderHistory", "IdOrderHistory");
-            tableMapping.ColumnMappings.Add("IdOrder", "IdClient");
-            tableMapping.ColumnMappings.Add("DateOrder", "DateOrder");
-            tableMapping.ColumnMappings.Add("PriceTotal", "PriceTotal");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[order_history] WHERE (([IdOrderHistory] = @Original_IdOrderHis" +
-                "tory) AND ([IdOrder] = @Original_IdOrder) AND ([DateOrder] = @Original_DateOrder" +
-                ") AND ([PriceTotal] = @Original_PriceTotal))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdOrderHistory", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrderHistory", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateOrder", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PriceTotal", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[order_history] ([IdOrder], [DateOrder], [PriceTotal]) VALUES (" +
-                "@IdOrder, @DateOrder, @PriceTotal);\r\nSELECT IdOrderHistory, IdOrder, DateOrder, " +
-                "PriceTotal FROM order_history WHERE (IdOrderHistory = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateOrder", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PriceTotal", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[order_history] SET [IdOrder] = @IdOrder, [DateOrder] = @DateOrder, [PriceTotal] = @PriceTotal WHERE (([IdOrderHistory] = @Original_IdOrderHistory) AND ([IdOrder] = @Original_IdOrder) AND ([DateOrder] = @Original_DateOrder) AND ([PriceTotal] = @Original_PriceTotal));
-SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (IdOrderHistory = @IdOrderHistory)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateOrder", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOrder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PriceTotal", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdOrderHistory", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrderHistory", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdOrder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateOrder", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOrder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PriceTotal", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdOrderHistory", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdOrderHistory", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp4.Properties.Settings.Default.RestaurantConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM dbo.order_history";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RestaurantDataSet.order_historyDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RestaurantDataSet.order_historyDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RestaurantDataSet.order_historyDataTable dataTable = new RestaurantDataSet.order_historyDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(RestaurantDataSet.order_historyDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(RestaurantDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "order_history");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IdOrderHistory, int Original_IdOrder, System.DateTime Original_DateOrder, long Original_PriceTotal) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IdOrderHistory));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_IdOrder));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_DateOrder));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_PriceTotal));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int IdOrder, System.DateTime DateOrder, long PriceTotal) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(IdOrder));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DateOrder));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(PriceTotal));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int IdOrder, System.DateTime DateOrder, long PriceTotal, int Original_IdOrderHistory, int Original_IdOrder, System.DateTime Original_DateOrder, long Original_PriceTotal, int IdOrderHistory) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(IdOrder));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DateOrder));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(PriceTotal));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_IdOrderHistory));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_IdOrder));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_DateOrder));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_PriceTotal));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(IdOrderHistory));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int IdOrder, System.DateTime DateOrder, long PriceTotal, int Original_IdOrderHistory, int Original_IdOrder, System.DateTime Original_DateOrder, long Original_PriceTotal) {
-            return this.Update(IdOrder, DateOrder, PriceTotal, Original_IdOrderHistory, Original_IdOrder, Original_DateOrder, Original_PriceTotal, Original_IdOrderHistory);
-        }
-    }
-    
-    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3371,8 +2588,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
         private foodsTableAdapter _foodsTableAdapter;
         
         private order_detailsTableAdapter _order_detailsTableAdapter;
-        
-        private order_historyTableAdapter _order_historyTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -3433,20 +2648,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public order_historyTableAdapter order_historyTableAdapter {
-            get {
-                return this._order_historyTableAdapter;
-            }
-            set {
-                this._order_historyTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -3476,10 +2677,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                             && (this._order_detailsTableAdapter.Connection != null))) {
                     return this._order_detailsTableAdapter.Connection;
                 }
-                if (((this._order_historyTableAdapter != null) 
-                            && (this._order_historyTableAdapter.Connection != null))) {
-                    return this._order_historyTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -3500,9 +2697,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     count = (count + 1);
                 }
                 if ((this._order_detailsTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._order_historyTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -3531,15 +2725,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._clientsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3578,14 +2763,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._order_detailsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.order_details.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3609,14 +2786,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._order_detailsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._order_historyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.order_history.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._order_historyTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3690,11 +2859,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._order_historyTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._order_historyTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -3752,15 +2916,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                     if (this._order_detailsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._order_detailsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._order_detailsTableAdapter.Adapter);
-                    }
-                }
-                if ((this._order_historyTableAdapter != null)) {
-                    revertConnections.Add(this._order_historyTableAdapter, this._order_historyTableAdapter.Connection);
-                    this._order_historyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._order_historyTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._order_historyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._order_historyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._order_historyTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -3832,10 +2987,6 @@ SELECT IdOrderHistory, IdOrder, DateOrder, PriceTotal FROM order_history WHERE (
                 if ((this._order_detailsTableAdapter != null)) {
                     this._order_detailsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._order_detailsTableAdapter]));
                     this._order_detailsTableAdapter.Transaction = null;
-                }
-                if ((this._order_historyTableAdapter != null)) {
-                    this._order_historyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._order_historyTableAdapter]));
-                    this._order_historyTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
